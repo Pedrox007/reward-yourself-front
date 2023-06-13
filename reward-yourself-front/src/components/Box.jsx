@@ -1,5 +1,5 @@
 import React from 'react'
-import woman from '../assets/woman.svg'
+import woman from '../assets/woman.png'
 import '../styles/main.scss'
 
 export  const LoginBox =()=>{
@@ -8,12 +8,16 @@ export  const LoginBox =()=>{
    <section className='container'>    
      <div className='left'>
        <img src={woman}/>
+       <div className='overlay'>
+        <h2>Reward <span>Yourself</span></h2>
+       </div>
      </div>
      
     <div className='right'>
      
-        <h1>Fazer login</h1>
+        
       <form>
+      <h1>Fazer login</h1>
         <div className='input-block'>
           <label for="email">E-mail</label>
           <input type="email" />
@@ -25,9 +29,8 @@ export  const LoginBox =()=>{
          </div>
          
           <div className='check'> 
-            <input type="checkbox" id="lembrar-se" name="lembrar-se" />
-            <label for="lembrar-se">Lembrar-me</label>
-            <a>Esqueci minha senha</a>
+            <input type="checkbox" name="lembrar-me" />
+            <label for="lembrar-se">Lembrar-me <a>Esqueci minha senha</a></label>           
           </div>
             
         <input type='submit' value='Entrar'/>

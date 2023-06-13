@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 $primary-color:#FDA951;
+$primary-color-dark:#f79329;
 $bg-white:#ffffff;
 $bg-form:#F5F5F5;
 $bg-yellow:#fef9f5;
@@ -108,11 +109,11 @@ form{
   text-align:left;
   color:$font-color;
 }
-  &:first-child{
+  &:nth-child(even){
     border-bottom-right-radius:0px;
     border-bottom-left-radius:0px;
   }
-  &:nth-child(2){
+  &:nth-child(odd){
     border-top-left-radius:0px;
     border-top-right-radius:0px;
   }
@@ -133,17 +134,20 @@ form{
 }
 .overlay{
   position: absolute;
-  bottom: 20%;
+  bottom: 15%;
   background: rgba(0, 0, 0, 0.0); /* Black see-through */
   width: 100%;
   opacity:1;
   color: $primary-color;
-  font-size: 40px;
+  font-size: 20px;
   padding: 20px;
   text-align: center;
+  span{
+    color:$primary-color-dark;
+    font-size: inherit;
+  }
 }
 h1{
-margin-left:7rem;
 align-self:flex-start;
 margin-bottom:1rem;
 font-weight: 600;
@@ -162,12 +166,12 @@ input{
   color:$font-color;
 
    &[type='email']{
-     margin-left:12px;
-   }
+     padding:0px 12px 0px 12px;
+  }
      &[type='password']{
-     margin-left:12px;
+      padding:0px 12px 0px 12px;
    }
-  &[type=submit]{
+  &[type='submit']{
     background-color:$primary-color;
     border-radius:4px;
     color:$bg-form;
@@ -176,15 +180,16 @@ input{
     padding:0.5rem;
     min-width:100%;
   }
-  &[type=checkbox]{
+  &[type='checkbox']{
   background-color: #ffff;
   margin: 0;
-  font: inherit;
+  font-family: inherit;
   width: 1.5rem;
   height: 1.5rem;
-  border: 0.15em solid;
-  border-radius: 1rem; 
-  accent-color:$primary-color;
+  border: 1px solid;
+  border-radius: 4px; 
+  outline: none;
+  accent-color: $primary-color;
     
   }
   
