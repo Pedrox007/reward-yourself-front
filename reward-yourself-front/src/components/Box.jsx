@@ -8,7 +8,6 @@ export  const LoginBox =()=>{
    <section className='container'>    
      <div className='left'>
        <img src={woman}/>
-       <div className='overlay'>Reward Yourself</div>
      </div>
      
     <div className='right'>
