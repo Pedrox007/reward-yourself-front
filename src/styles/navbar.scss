@@ -1,15 +1,15 @@
 @use 'main.scss' as m;
+@use 'vars.scss' as var;
 
 .navbar{
     width: 100%;
     display: flex;
     position:fixed;
     justify-content: center;
-    background-color:m.$primary-color ;
+    background-color:var.$primary-color ;
     inset: 0px 0px;
     max-height: 85px;
-     .menu-icon{
-       
+     .menu-icon{     
         color: white;
         justify-self: start;
      }
@@ -25,7 +25,7 @@
         @include m.input--block(0px);
         min-width:600px;
         margin-top: 12px;
-        border-color: m.$primary-color;
+        border-color: var.$primary-color;
         label{
             display: block;
         }
@@ -33,7 +33,7 @@
     .search{
         position: absolute;
         inset: 20% 90%;
-        border:solid 1px m.$font-color;
+        border:solid 1px var.$font-color;
         border-right: 0;
         border-top: 0;
         border-bottom:0 ;
@@ -45,7 +45,7 @@
 
         i{
             font-size: 25px;
-            color:m.$primary-color;
+            color:var.$primary-color;
         }
     }
 }

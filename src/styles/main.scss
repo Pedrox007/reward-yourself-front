@@ -1,11 +1,5 @@
+@use './vars.scss' as var;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
-$primary-color:#FDA951;
-$primary-color-dark:#f79329;
-$bg-white:#ffffff;
-$bg-form:#F5F5F5;
-$bg-yellow:#fef9f5;
-$font-color:#8F8F8F;
-$text-input-color:#FAFAFC;
 
 *{
   padding:0;
@@ -13,6 +7,21 @@ $text-input-color:#FAFAFC;
   box-sizing:border-box;
   font-family: Poppins,sans-serif;
 }
+@mixin flex($justify,$align){
+  display:flex;
+  justify-content:$justify;
+  align-items:$align;
+  padding:1rem;
+}
+@mixin font($size,$weight,$line-height){
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+main{
+  padding-top: 500px;
+}
+
 body{
   display:flex;
   width: 100%;
@@ -26,20 +35,20 @@ body{
   display:grid;
   grid-template-columns:50% 50%;
   border-radius:10;
-  box-shadow:5px 5px 10px rgba(0,0,0,.212); 
+  box-shadow:5px 5px 5px rgba(0,0,0,.212); 
   overflow:hidden;
   margin-top:40px;
 }
 
 .link{
-  color:$primary-color;
+  color:var.$primary-color;
   text-decoration:none;
 }
 span{
   margin:1rem 1rem;
   text-align:center;
   font-size:12px;
-  color:$font-color;
+  color:var.$font-color;
 }
 .social-box{
   display:flex;
@@ -52,7 +61,7 @@ span{
   justify-content:center;
   max-height:3rem;
   max-width:5rem;
-  border:1px solid $font-color;
+  border:1px solid var.$font-color;
   border-radius:4px;
   margin: 0px 12px;
   padding:0px 14px;
@@ -70,24 +79,19 @@ span{
   background-image:url('../assets/facebook.svg');
 }
 
-@mixin flex{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:1rem;
-}
+
 .left{
-  @include flex();
-  background-color:$bg-yellow;
+  @include flex(center,center);
+  background-color:var.$bg-yellow;
   img{
   width:80%;
   }
 }
 
 .right {
-@include flex();
+@include flex(center,center);
   flex-direction:column;
-  background-color:$bg-white;
+  background-color:var.$bg-white;
   padding:1rem;
 }
 form{
@@ -101,7 +105,7 @@ form{
   margin:0px 0px 0px 0px;
   border:1px solid #E6E6F0;
   border-radius: 4px;
-  background-color:$text-input-color;
+  background-color:var.$text-input-color;
 }
 .input-block{
  @include input--block(0.5rem);
@@ -109,11 +113,8 @@ form{
   label{
   margin-left:12px;
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
   text-align:left;
-  color:$font-color;
+  color:var.$font-color;
 }
   &:nth-child(even){
     border-bottom-right-radius:0px;
@@ -131,9 +132,9 @@ form{
   margin:2rem 0 2rem 0;
   label{margin-left:5px;
        font-size:12px;
-       color:$font-color;}
+       color:var.$font-color;}
   a{
-    color:$font-color;
+    color:var.$font-color;
     justify-content:flex-end;
     margin-left:5rem;
   }
@@ -144,23 +145,20 @@ form{
   background: rgba(0, 0, 0, 0.0); /* Black see-through */
   width: 100%;
   opacity:1;
-  color: $primary-color;
+  color: var.$primary-color;
   font-size: 20px;
   padding: 20px;
   text-align: center;
   span{
-    color:$primary-color-dark;
+    color:var.$primary-color-dark;
     font-size: inherit;
   }
 }
 h1{
 align-self:flex-start;
 margin-bottom:1rem;
-font-weight: 600;
-font-size: 1.5rem;
-line-height: 34px;
-color:$font-color;
-text-align: left;
+@include font(1.5rem,600,34px);
+color:var.$font-color;
 }
 
 @mixin input($width){
@@ -169,7 +167,7 @@ text-align: left;
   border:none;
   outline: none;
   background-color:#FAFAFC;
-  color:$font-color;
+  color:var.$font-color;
 }
 
 input{
@@ -182,9 +180,9 @@ input{
     padding:0px 12px 0px 12px;
    }
   &[type='submit']{
-    background-color:$primary-color;
+    background-color:var.$primary-color;
     border-radius:4px;
-    color:$bg-form;
+    color:var.$bg-form;
     font-size:0.8rem;
     font-weight:bold;
     padding:0.5rem;
@@ -199,10 +197,8 @@ input{
   border: 1px solid;
   border-radius: 4px; 
   outline: none;
-  accent-color: $primary-color;
-    
+  accent-color: var.$primary-color;
   }
-  
 } 
 
 @media (max-width:762px){

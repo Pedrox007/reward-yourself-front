@@ -1,20 +1,71 @@
+@use 'vars.scss' as var;
+@use 'main.scss' as m;
+
 li{
     list-style: none;
+}
+.card-header{
+    @include m.font(16px,700,20px);
+    @include m.flex(center,center);
+    flex-direction: row;
+    margin-top: 16px;
+    span{
+        display: flex;
+        justify-self: end;
+    }
+    svg{
+        max-width: 21.38px;
+        max-height: 21.38px;
+    }
+}
+h4{
+    @include m.font(16px,400,24px);
+    color: var.$font-color;
+    text-wrap:balance;
+}
+.item{
+    display: flex;
+    flex-flow: column wrap;
+}
+.card-list{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
 }
 .card{
     display:grid;
     grid-template-columns:30% 70%;
     max-height: 100px;
-   
+    margin: 0px 12px 50px;
     .right{
-        display:flex;
-        justify-content:center;
-        align-items:center;
+        @include m.flex(start,start);
         flex-direction:column;
-        padding:1rem;
+        background-color: rgba(237, 237, 237, 0.66);
+        span{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        svg{margin-right: 8px;}
+        img{
+                margin-right: 8px;
+                max-width: 18px;
+                max-height: 15.74px;
+            }
+        
     }
-    img{
-        max-width: 80%;
+    .card-text{
+        @include m.font(16px,700,24px);
+        color: var.$font-color-card;
+        display: block;
+        margin-left: 0px;
+        text-align: left;
     }
-    
+    .text-value{
+        @include m.font(16px,400,24px);
+        margin-left: 8px;
+    }
+    .left{
+        img{  max-width: 100%; }
+    }
 }
