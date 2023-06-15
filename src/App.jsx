@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { BrowserRouter as Router,Routes, Route} from "react-router-dom";
+import Tarefas from '../src/components/Tarefas'
 import LoginBox from '../src/components/Box'
 
 function App() {
   return (
     <>
-    <LoginBox/>
+    <Router>
+      <Routes>    
+        <Route path='login' Component={LoginBox}/>
+        <Route path='tarefas' Component={Tarefas}/>
+    </Routes>
+    </Router>
     </>
   )
 }

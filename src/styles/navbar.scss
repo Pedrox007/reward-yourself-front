@@ -1,0 +1,51 @@
+@use 'main.scss' as m;
+
+.navbar{
+    width: 100%;
+    display: flex;
+    position:fixed;
+    justify-content: center;
+    background-color:m.$primary-color ;
+    inset: 0px 0px;
+    max-height: 85px;
+     .menu-icon{
+       
+        color: white;
+        justify-self: start;
+     }
+    li{
+        list-style: none;
+        position: relative;
+    }
+    input{
+       @include m.input(80%);
+       padding:0px 0px 0px 12px;
+    }
+    .input-block{
+        @include m.input--block(0px);
+        min-width:600px;
+        margin-top: 12px;
+        border-color: m.$primary-color;
+        label{
+            display: block;
+        }
+    }
+    .search{
+        position: absolute;
+        inset: 20% 90%;
+        border:solid 1px m.$font-color;
+        border-right: 0;
+        border-top: 0;
+        border-bottom:0 ;
+        display: flex;
+        padding:0px 0px 0px 15px;
+        max-width: 30px;
+        min-height: 36px;
+        margin: 0px;
+
+        i{
+            font-size: 25px;
+            color:m.$primary-color;
+        }
+    }
+}

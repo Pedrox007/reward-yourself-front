@@ -2,7 +2,7 @@ import React from 'react'
 import woman from '../assets/woman.png'
 import '../styles/main.scss'
 
-export  const LoginBox =()=>{
+  const LoginBox =()=>{
   return(
   <>
    <section className='container'>    

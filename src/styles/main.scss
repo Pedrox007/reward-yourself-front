@@ -6,6 +6,7 @@ $bg-form:#F5F5F5;
 $bg-yellow:#fef9f5;
 $font-color:#8F8F8F;
 $text-input-color:#FAFAFC;
+
 *{
   padding:0;
   margin:0;
@@ -68,11 +69,15 @@ span{
   padding:1rem;
   background-image:url('../assets/facebook.svg');
 }
-.left{
+
+@mixin flex{
   display:flex;
   justify-content:center;
   align-items:center;
   padding:1rem;
+}
+.left{
+  @include flex();
   background-color:$bg-yellow;
   img{
   width:80%;
@@ -80,9 +85,7 @@ span{
 }
 
 .right {
-  display:flex;
-  justify-content:center;
-  align-items:center;
+@include flex();
   flex-direction:column;
   background-color:$bg-white;
   padding:1rem;
@@ -91,14 +94,17 @@ form{
   display:flex;
   flex-direction:column;
 }
-.input-block{
-  padding:0.5rem;
+@mixin input--block($p){
+  padding:0.5rem ;
   width:100%;
   max-height: 4rem;
   margin:0px 0px 0px 0px;
   border:1px solid #E6E6F0;
   border-radius: 4px;
   background-color:$text-input-color;
+}
+.input-block{
+ @include input--block(0.5rem);
   
   label{
   margin-left:12px;
@@ -157,19 +163,23 @@ color:$font-color;
 text-align: left;
 }
 
-input{
+@mixin input($width){
   font-size: 13px;
-  width:100%;
+  width:$width;
   border:none;
   outline: none;
   background-color:#FAFAFC;
   color:$font-color;
+}
 
-   &[type='email']{
-     padding:0px 12px 0px 12px;
+input{
+ @include input(100%);
+
+  &[type='email']{
+    padding:0px 12px 0px 12px;
   }
-     &[type='password']{
-      padding:0px 12px 0px 12px;
+  &[type='password']{
+    padding:0px 12px 0px 12px;
    }
   &[type='submit']{
     background-color:$primary-color;
