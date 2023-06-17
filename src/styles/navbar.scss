@@ -1,17 +1,41 @@
 @use 'main.scss' as m;
 @use 'vars.scss' as var;
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 
 .navbar{
     width: 100%;
     display: flex;
     position:fixed;
-    justify-content: center;
+    z-index: 100;
     background-color:var.$primary-color ;
     inset: 0px 0px;
     max-height: 85px;
+    .nav-logo{
+        @include m.font(30px,700,20px,Maven Pro,#ffff);
+        margin: 0rem ;
+    }
+    ul{
+        min-width: 100%;
+        @include m.flex(space-between,center,0rem);
+    }
+    .coins-button{
+        @include m.flex(center,center,1rem 2rem);
+        @include m.font(20px,700,20px);
+        background-color: #F5F5F5;
+        border: none;
+        color: var.$primary-color;
+        margin-right:12px ;
+        border-radius: 4px;
+        img{
+        max-width: 23px;
+        max-height: 23px;
+        margin-right: 0.5rem;}
+    }
      .menu-icon{     
         color: white;
         justify-self: start;
+        font-size: 60px;
+        margin-right: 0rem;
      }
     li{
         list-style: none;
@@ -23,8 +47,10 @@
     }
     .input-block{
         @include m.input--block(0px);
+        position: relative;
         min-width:600px;
-        margin-top: 12px;
+        margin: 5rem 5rem 0rem 0rem;
+        border-radius: 4px;
         border-color: var.$primary-color;
         label{
             display: block;
@@ -32,7 +58,7 @@
     }
     .search{
         position: absolute;
-        inset: 20% 90%;
+        inset: 65% 90%;
         border:solid 1px var.$font-color;
         border-right: 0;
         border-top: 0;

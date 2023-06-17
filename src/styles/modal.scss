@@ -1,0 +1,69 @@
+@use './main.scss' as m;
+@use 'vars.scss' as var;
+
+.modal{
+    @include m.flex(center,center,0rem,column);
+    position: fixed;
+    z-index: 200; 
+    inset: 0% 0%;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(63, 61, 86, 0.25);
+    overflow: auto;
+
+   .form-conteiner{
+    position: absolute;
+    z-index: 201;
+   width: 50vw;
+
+    .modal-header{
+        display:flex;
+        justify-content: end;
+        padding: 1rem;
+        background-color: var.$primary-color;
+        min-width: 100%;
+        min-height: 4rem;
+        i{
+            color: #FAFAFC;
+            font-size: 26px;
+        }
+    }
+    form{
+        @include m.flex(start,start,2rem,column);
+        background-color: #ffffff;
+        min-width: 80%;
+        h1{
+            color: rgba(50, 38, 77, 1);
+        }
+        label{  
+            margin-top: 1rem;   
+            display: block;
+            text-align: left;
+            font-size: 12px;
+            font-style: normal;
+            color:var.$font-color;
+        }
+        input{         
+            display: block;
+            height: 2rem;
+            min-width: 100%;
+            border: 2px solid #E6E6F0;
+            border-radius: 4px;
+            background-color: #FAFAFC;
+        }
+       button{
+        margin-top: 1rem;
+        background-color:var.$primary-color;
+        border-color: transparent;
+        border-radius:4px;
+        color:var.$bg-form;
+        font-size:0.8rem;
+        font-weight:bold;
+        padding:0.5rem;
+        min-width:100%;
+       }
+    }
+   }
+    
+}
+

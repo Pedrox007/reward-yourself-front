@@ -1,5 +1,5 @@
 import { BrowserRouter as Router,Routes, Route} from "react-router-dom";
-import Tarefas from '../src/components/Tarefas'
+import Tasks from '../src/components/Tasks'
 import LoginBox from '../src/components/Box'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Routes>    
         <Route path='login' Component={LoginBox}/>
-        <Route path='tarefas' Component={Tarefas}/>
+        <Route path='tarefas' Component={Tasks}/>
     </Routes>
     </Router>
     </>

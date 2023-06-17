@@ -1,0 +1,141 @@
+@use './vars.scss' as var;
+@use 'main.scss' as m;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+.container{
+    min-height:calc(90vh - 40px * 2);
+    display:grid;
+    grid-template-columns:50% 50%;
+    border-radius:10;
+    box-shadow:5px 5px 5px rgba(0,0,0,.212); 
+    overflow:hidden;
+    margin-top:40px;
+  }
+
+  .link{
+    color:var.$primary-color;
+    text-decoration:none;
+  }
+  span{
+    margin:1rem 1rem;
+    text-align:center;
+    font-size:12px;
+    color:var.$font-color;
+  }
+  .social-box{
+    @include m.flex(center,center,0rem);
+  }
+  .logo{
+    @include m.flex(center,center,0px 14px);
+    max-height:3rem;
+    max-width:5rem;
+    border:1px solid var.$font-color;
+    border-radius:4px;
+    margin: 0px 12px;
+  }
+  .google{
+    @include m.flex(center,center,1rem);
+    background-image:url('../assets/google.svg');
+  }
+  .facebook{
+    @include m.flex(center,center,1rem);
+    background-image:url('../assets/facebook.svg');
+  }
+  .left{
+    @include m.flex(center,center);
+    background-color:var.$bg-yellow;
+    img{
+    width:80%;
+    }
+  }
+  .right {
+    @include m.flex(center,center,1rem,column);
+      background-color:var.$bg-white;
+    }
+    form{@include m.flex(center,center,0rem,column);}
+    
+    .input-block{
+     @include m.input--block(0.5rem);
+      
+      label{
+      margin-left:12px;
+      font-style: normal;
+      text-align:left;
+      color:var.$font-color;
+    }
+      &:nth-child(even){
+        border-bottom-right-radius:0px;
+        border-bottom-left-radius:0px;
+      }
+      &:nth-child(odd){
+        border-top-left-radius:0px;
+        border-top-right-radius:0px;
+      }
+    }
+    .check{
+      font-size:12px;
+      display:flex;
+      flex-direction:row;
+      margin:2rem 0 2rem 0;
+      label{margin-left:5px;
+           font-size:12px;
+           color:var.$font-color;}
+      a{
+        color:var.$font-color;
+        justify-content:flex-end;
+        margin-left:5rem;
+      }
+    }
+    .overlay{
+      @include m.font(20px,700,20px,Maven Pro,var.$primary-color);
+      position: absolute;
+      bottom: 15%;
+      background: rgba(0, 0, 0, 0.0); 
+      width: 100%;
+      opacity:1;
+      padding: 20px;
+      text-align: center;
+      span{
+        color:var.$primary-color-dark;
+        font-size: inherit;
+      }
+    }
+    input{
+        @include m.input(100%);      
+         &[type='email']{
+           padding:0px 12px 0px 12px;
+         }
+         &[type='password']{
+           padding:0px 12px 0px 12px;
+          }
+         &[type='submit']{
+           background-color:var.$primary-color;
+           border-radius:4px;
+           color:var.$bg-form;
+           font-size:0.8rem;
+           font-weight:bold;
+           padding:0.5rem;
+           min-width:100%;
+         }
+         &[type='checkbox']{
+         background-color: #ffff;
+         margin: 0;
+         font-family: inherit;
+         width: 1.5rem;
+         height: 1.5rem;
+         border: 1px solid;
+         border-radius: 4px; 
+         outline: none;
+         accent-color: var.$primary-color;
+         }
+       } 
+       
+@media (max-width:762px){
+         .container{
+         grid-template-columns:auto;
+         }      
+         .left{
+         display:none;
+         }
+       }    
