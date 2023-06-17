@@ -6,6 +6,8 @@ import '../styles/main.scss'
 
 
 const Tasks = () => {
+  
+  const [coins,setCoins]=useState(0)
   const [tasks,setTasks]=useState([])
   const [isOpen,setIsOpen]=useState(false)
 
@@ -17,27 +19,19 @@ const Tasks = () => {
   }
   return (
     <div>
-
-      <Navbar/>
-      <main >
+      <Navbar coins={coins} setCoins={setCoins}/>
       <Form isOpen={isOpen} openModal={openModal} closeModal={closeModal}/>
+      <main className='layout' >
         <div className='title-task'>
           <h1 >Suas Tarefas</h1> <button onClick={openModal}><i className="bi bi-plus-circle"></i></button>
         </div>
         <section>
           <ul className='card-list'>        
-            <li><Card/></li>
-            <li><Card/></li>
-            <li><Card/></li>
-            <li><Card/></li>
-            <li><Card/></li>
-            <li><Card/></li>
-            <li><Card/></li>
-            <li><Card/></li>
+          
           </ul>
         </section>
       </main>
     </div>
   )
 }
-export default Tarefas
+export default Tasks

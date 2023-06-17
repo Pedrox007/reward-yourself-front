@@ -12,7 +12,13 @@
     max-height: 85px;
     .nav-logo{
         @include m.font(30px,700,20px,Maven Pro,#ffff);
-        margin: 0rem ;
+        position: absolute;
+        inset: 28%  65% 0% 0%;
+        margin: 0rem;
+    }
+    .join{
+        @include m.flex(center,center,0rem,column);
+        position: relative;
     }
     ul{
         min-width: 100%;
@@ -33,9 +39,7 @@
     }
      .menu-icon{     
         color: white;
-        justify-self: start;
-        font-size: 60px;
-        margin-right: 0rem;
+        font-size: 50px;
      }
     li{
         list-style: none;
@@ -48,8 +52,8 @@
     .input-block{
         @include m.input--block(0px);
         position: relative;
-        min-width:600px;
-        margin: 5rem 5rem 0rem 0rem;
+        min-width:45rem;
+        margin: 5rem 0rem 0rem 0rem;
         border-radius: 4px;
         border-color: var.$primary-color;
         label{
