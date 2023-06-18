@@ -10,11 +10,12 @@
     height: 100%; 
     background-color: rgba(63, 61, 86, 0.25);
     overflow: auto;
-
+    
    .form-conteiner{
     position: absolute;
     z-index: 201;
     width: 50vw;
+    border-radius: 2rem;
 
     .modal-header{
         display:flex;
@@ -23,6 +24,7 @@
         background-color: var.$primary-color;
         min-width: 100%;
         min-height: 4rem;
+        
         i{
             color: #FAFAFC;
             font-size: 27px;

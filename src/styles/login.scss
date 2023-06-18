@@ -3,8 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 
-.container{
+.login-layout{
+  @include m.flex(center,center,1rem,);
+}
+.container-login{
     min-height:calc(90vh - 40px * 2);
+    width: 80%;
     display:grid;
     grid-template-columns:50% 50%;
     border-radius:10;
@@ -12,10 +16,11 @@
     overflow:hidden;
     margin-top:40px;
   }
-
+ 
   .link{
     color:var.$primary-color;
     text-decoration:none;
+    cursor: pointer;
   }
   span{
     margin:1rem 1rem;
@@ -33,10 +38,12 @@
     border:1px solid var.$font-color;
     border-radius:4px;
     margin: 0px 12px;
+    cursor: pointer;
   }
   .google{
     @include m.flex(center,center,1rem);
     background-image:url('../assets/google.svg');
+    
   }
   .facebook{
     @include m.flex(center,center,1rem);
@@ -53,7 +60,12 @@
     @include m.flex(center,center,1rem,column);
       background-color:var.$bg-white;
     }
-    form{@include m.flex(center,center,0rem,column);}
+    form{@include m.flex(center,center,0rem,column);
+      h1{
+        align-self: start;
+        margin: 1rem 0rem;
+      }
+    }
     
     .input-block{
      @include m.input--block(0.5rem);
@@ -117,6 +129,7 @@
            font-weight:bold;
            padding:0.5rem;
            min-width:100%;
+           cursor: pointer;
          }
          &[type='checkbox']{
          background-color: #ffff;

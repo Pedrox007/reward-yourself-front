@@ -78,7 +78,7 @@ h1{
   color:var.$font-color;
 }
 .layout{
-  @include flex(start,space-between ,10rem,column);
+  @include flex(start,space-between ,10rem 1rem 1rem 1rem,column);
   min-height: 100vh;
   min-width: 100%;
 }

@@ -21,7 +21,6 @@ li{
 h4{
     @include m.font(16px,400,24px);
     color: var.$font-color;
-    text-wrap:balance;
 }
 .item{
     display: flex;

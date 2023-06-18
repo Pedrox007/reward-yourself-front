@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
-import Navbar from './NavBar'
-import Card from './Card'
-import Form from './Form'
+import Layout from './Layout'
+import CardList from './CardList'
+import Modal from './Modal'
 import '../styles/main.scss'
 
-
 const Tasks = () => {
-  
-  const [coins,setCoins]=useState(0)
   const [tasks,setTasks]=useState([])
   const [isOpen,setIsOpen]=useState(false)
 
@@ -19,18 +16,13 @@ const Tasks = () => {
   }
   return (
     <div>
-      <Navbar coins={coins} setCoins={setCoins}/>
-      <Form isOpen={isOpen} openModal={openModal} closeModal={closeModal}/>
-      <main className='layout' >
+      <Layout>
+        <Modal isOpen={isOpen} closeModal={closeModal}/>
         <div className='title-task'>
-          <h1 >Suas Tarefas</h1> <button onClick={openModal}><i className="bi bi-plus-circle"></i></button>
-        </div>
-        <section>
-          <ul className='card-list'>        
-          
-          </ul>
-        </section>
-      </main>
+          <h1>Suas Tarefas</h1> <button onClick={openModal}><i className="bi bi-plus-circle"></i></button>
+        </div>       
+        <CardList tasks={tasks}/> 
+      </Layout>
     </div>
   )
 }

@@ -9,17 +9,20 @@
     z-index: 100;
     background-color:var.$primary-color ;
     inset: 0px 0px;
-    max-height: 85px;
+    max-height: 8rem;
+    img{
+        max-width: 3rem;
+    }
     .nav-logo{
-        @include m.font(30px,700,20px,Maven Pro,#ffff);
+        @include m.font(25px,700,20px,Maven Pro,#ffff);
         position: absolute;
-        inset: 28%  65% 0% 0%;
+        min-width: 20rem;
+        inset: 1.4rem 0rem 0rem 4rem;
         margin: 0rem;
+        padding: 0rem;
+        
     }
-    .join{
-        @include m.flex(center,center,0rem,column);
-        position: relative;
-    }
+   
     ul{
         min-width: 100%;
         @include m.flex(space-between,center,0rem);
@@ -38,6 +41,7 @@
         margin-right: 0.5rem;}
     }
      .menu-icon{     
+        position: relative;
         color: white;
         font-size: 50px;
      }
@@ -53,7 +57,7 @@
         @include m.input--block(0px);
         position: relative;
         min-width:45rem;
-        margin: 5rem 0rem 0rem 0rem;
+        margin: 8rem 0rem 0rem 0rem;
         border-radius: 4px;
         border-color: var.$primary-color;
         label{
@@ -62,7 +66,7 @@
     }
     .search{
         position: absolute;
-        inset: 65% 90%;
+        inset: 73% 90%;
         border:solid 1px var.$font-color;
         border-right: 0;
         border-top: 0;
