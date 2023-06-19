@@ -16,7 +16,7 @@ import icon from '../assets/icon.png'
          
             <div className="input-block">
               <label htmlFor="search" >Filtrar</label>
-              <input type="search" placeholder='Digite a tarefa que deseja realizar' />
+              <input type="search" placeholder='Digite a tarefa que deseja realizar' id="search" />
             </div>
             <div className="search"><i className="bi bi-search"></i></div>
           </li>

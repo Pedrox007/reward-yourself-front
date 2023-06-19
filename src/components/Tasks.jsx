@@ -7,19 +7,35 @@ import '../styles/main.scss'
 const Tasks = () => {
   const [tasks,setTasks]=useState([])
   const [isOpen,setIsOpen]=useState(false)
+  const [data,setData]=useState({})
 
+
+function handleChange(e){
+    const name = e.target.id
+    const value = e.target.value
+    setData(values=> ({...values,[name]:value}))
+}
   function openModal(){
     setIsOpen(true)
+    
   }
   function closeModal(){
     setIsOpen(false)
   }
+  function sendData(){
+    setTasks([...tasks,data])
+    setData({})
+  }
   return (
     <div>
       <Layout>
-        <Modal isOpen={isOpen} closeModal={closeModal}/>
+        <Modal isOpen={isOpen} 
+        handleChange={handleChange} 
+        closeModal={closeModal} 
+        sendData={sendData}/>
         <div className='title-task'>
-          <h1>Suas Tarefas</h1> <button onClick={openModal}><i className="bi bi-plus-circle"></i></button>
+          <h1>Suas Tarefas</h1> <button onClick={openModal}>
+            <i className="bi bi-plus-circle"></i></button>
         </div>       
         <CardList tasks={tasks}/> 
       </Layout>

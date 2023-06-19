@@ -6,9 +6,9 @@ li{
 }
 .card-header{
     @include m.font(16px,700,20px);
-    @include m.flex(center,center);
+    @include m.flex(space-between,center);
     flex-direction: row;
-    margin-top: 16px;
+    margin: 16px 0px 0px 0px;
     span{
         display: flex;
         justify-self: end;
@@ -35,15 +35,17 @@ h4{
     display:grid;
     grid-template-columns:30% 70%;
     max-height: 100px;
-    margin: 0px 12px 50px;
+    margin: 0px 12px 20px ;
     .right{
-        @include m.flex(start,start);
-        flex-direction:column;
+        @include m.flex(start,start,column);
         background-color: rgba(237, 237, 237, 0.66);
         span{
             display: flex;
             flex-direction: row;
             align-items: center;
+            i{
+                margin-right: 0.5rem;
+            }
         }
         svg{margin-right: 8px;}
         img{

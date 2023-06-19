@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Form from './Form'
 import '../styles/modal.scss'
 
-const Modal = ({isOpen,closeModal}) => {
+const Modal = ({isOpen,closeModal,handleChange,sendData}) => {
 
 if(isOpen){
   return (
@@ -12,7 +12,7 @@ if(isOpen){
           <div className="modal-header">
           <i onClick={closeModal} className="bi bi-x-lg"></i>
           </div>
-           <Form/>
+           <Form closeModal={closeModal} sendData={sendData} handleChange={handleChange}/>
       </div>
     </div>
     </>

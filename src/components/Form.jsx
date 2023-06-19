@@ -1,26 +1,27 @@
-import React,{ useState } from 'react'
+import React from 'react'
 
-const Form = () => {
-const [data,setData]=useState({})
-
-function handleChange(e){
-    const name = e.target.name
-    const value = e.target.value
-    setData(values=> ({...values,[name]:value}))
+const Form = ({sendData,handleChange,closeModal}) => {
+function resolve(){
+  sendData()
+  closeModal()
 }
   return (
     <>
           <form>
             <h1>Adicionar Tarefas</h1>
-                <label name="tarefa"for="tarefa">Tarefa</label>
-                <input onChange={handleChange}type="text" name="tarefa" />
-                <label name="tempo"for="senha">Tempo(hora)</label>
-                <input onChange={handleChange}type="number" name="tempo"/>
-                <label name="custo"for="senha">Custo</label>
-                <input onChange={handleChange} type="number" name="custo" />
-                <label name="descrição"for="descrição">Descrição</label>
-                <input onChange={handleChange}type="text-area" name="descricao" />
-                <button >Adicionar</button>        
+                <label  htmlFor="tarefa">Tarefa</label>
+                <input onChange={handleChange} type="text" id="tarefa" />
+
+                <label  htmlFor="tempo">Tempo(hora)</label>
+                <input onChange={handleChange}type="number" id="tempo"/>
+
+                <label  htmlFor="custo">Custo</label>
+                <input onChange={handleChange} type="number" id="custo" />
+
+                <label  htmlFor="descricao">Descrição</label>
+                <input onChange={handleChange} type="text-area" id="descricao" />
+
+                <button type="button" onClick={resolve}>Adicionar</button>        
               </form>
     </>
   )
