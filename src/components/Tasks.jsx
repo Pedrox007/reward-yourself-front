@@ -10,14 +10,16 @@ const Tasks = () => {
   const [data,setData]=useState({})
 
 
-function handleChange(e){
-    const name = e.target.id
+  function handleChange(e){
+    const id = e.target.id
     const value = e.target.value
-    setData(values=> ({...values,[name]:value}))
-}
+    setData(values=> ({...values,[id]:value}))
+  }
+  function handleDelete(tarefa){
+    setTasks(tasks.filter(task => task.tarefa !== tarefa))
+  }
   function openModal(){
-    setIsOpen(true)
-    
+    setIsOpen(true) 
   }
   function closeModal(){
     setIsOpen(false)

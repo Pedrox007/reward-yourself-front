@@ -4,11 +4,14 @@
 li{
     list-style: none;
 }
+.card-container{
+    padding: 0rem;
+    margin: 3rem;
+}
 .card-header{
     @include m.font(16px,700,20px);
-    @include m.flex(space-between,center);
-    flex-direction: row;
-    margin: 16px 0px 0px 0px;
+    @include m.flex(space-between,center,0rem);
+    margin-bottom: 0rem;
     span{
         display: flex;
         justify-self: end;
@@ -27,25 +30,31 @@ h4{
     flex-flow: column wrap;
 }
 .card-list{
-    display: flex;
+    @include m.flex(center,center,0rem);
     flex-flow: wrap;
-    justify-content: center;
+    margin-bottom: 5rem;
 }
 .card{
     display:grid;
     grid-template-columns:30% 70%;
-    max-height: 100px;
-    margin: 0px 12px 20px ;
+    margin-top: 0rem;
     .right{
         @include m.flex(start,start,column);
         background-color: rgba(237, 237, 237, 0.66);
+        button{
+            margin-top: 1rem;
+            background-color:var.$primary-color;
+            border-color: transparent;
+            border-radius:4px;
+            color:var.$bg-form;
+            font-size:0.8rem;
+            font-weight:bold;
+            padding:0.5rem;
+            min-width:100%;
+        }
         span{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            i{
-                margin-right: 0.5rem;
-            }
+            @include m.flex(start,center,0rem);
+            i{   margin-right: 0.5rem;}
         }
         svg{margin-right: 8px;}
         img{

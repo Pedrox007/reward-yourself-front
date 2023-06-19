@@ -62,6 +62,7 @@ span{
   border-radius:4px;
   margin: 0px 12px;
 }
+
 .title-task{
   @include flex(space-between,center,1rem);
   
@@ -78,7 +79,5 @@ h1{
   color:var.$font-color;
 }
 .layout{
-  @include flex(start,space-between ,10rem 1rem 1rem 1rem,column);
-  min-height: 100vh;
-  min-width: 100%;
+  @include flex(start,space-between ,10rem 1rem 2rem 1rem,column);
 }
