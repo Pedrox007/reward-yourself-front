@@ -4,9 +4,11 @@
 li{
     list-style: none;
 }
+
 .card-container{
-    padding: 0rem;
-    margin: 3rem;
+    padding: 1rem;
+    margin: 0rem;
+    max-width: 28rem;
 }
 .card-header{
     @include m.font(16px,700,20px);
@@ -30,16 +32,17 @@ h4{
     flex-flow: column wrap;
 }
 .card-list{
-    @include m.flex(center,center,0rem);
-    flex-flow: wrap;
+    @include m.grid(repeat(2, 1fr),repeat(2, 1fr),1rem,center,center);
+    place-items: center;
     margin-bottom: 5rem;
 }
 .card{
     display:grid;
     grid-template-columns:30% 70%;
     margin-top: 0rem;
-    .right{
-        @include m.flex(start,start,column);
+    min-width: 100%;
+    .card-right{
+        @include m.flex(start,start,1rem,column);
         background-color: rgba(237, 237, 237, 0.66);
         button{
             margin-top: 1rem;
@@ -65,17 +68,28 @@ h4{
         
     }
     .card-text{
-        @include m.font(16px,700,24px);
+        @include m.font(1rem,700,24px);
         color: var.$font-color-card;
         display: block;
         margin-left: 0px;
         text-align: left;
     }
     .text-value{
-        @include m.font(16px,400,24px);
+        @include m.font(1rem,400,24px);
         margin-left: 8px;
     }
-    .left{
+    .card-left{
+        @include m.flex(center,center,1rem,column);
+        background-color: var.$bg-yellow;
         img{  max-width: 100%; }
     }
+}
+@media (min-width: 300px) {
+    .card-list { grid-template-columns: repeat(1, 1fr); }
+}
+@media (min-width: 600px) {
+    .card-list { grid-template-columns: repeat(2, 1fr); }
+}
+  @media (min-width: 900px) {
+  .card-list { grid-template-columns: repeat(2, 1fr); }
 }

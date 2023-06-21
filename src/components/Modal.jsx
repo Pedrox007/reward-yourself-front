@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import {TaskContext} from '../context/TaskContext'
 import Form from './Form'
 import '../styles/modal.scss'
 
-const Modal = ({isOpen,closeModal,handleChange,sendData}) => {
-
+const Modal = ({isOpen,closeModal}) => {
+const {sendData,handleChange}= useContext(TaskContext)
 if(isOpen){
   return (
     <>

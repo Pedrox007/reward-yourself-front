@@ -1,16 +1,18 @@
-import React from 'react'
+
 import '../styles/card.scss'
 import list_icon from '../assets/list.png'
 import coin_icon from '../assets/coin_icon.png'
+import StopWatch from './StopWatch'
 
 const data = Date(Date.now())
 let dia= data.toString().slice(8,11)
 let mes= data.toString().slice(4,7)
 let ano= data.toString().slice(10,16)
 
-const Card = ({item}) => {
+const Card = ({item,openWatch,isOpenWatch,closeWatch}) => {
   return (
     <>
+    <StopWatch time={item.tempo} isOpenWatch={isOpenWatch} closeWatch={closeWatch}/>
     <div className='card-container'>
       <div className='card-header'> {item.tarefa}
         <span>
@@ -21,10 +23,10 @@ const Card = ({item}) => {
       </div>
           <div className="card">
       
-              <div className="left">
+              <div className="card-left">
                 <img src={list_icon} alt="list_icon" />
               </div>
-              <div className="right">
+              <div className="card-right">
                 <div className="card-body">
                 <h4>{item.descricao}</h4>
                 <span className='card-text'><img src={coin_icon} alt="coin_icon" />Moedas: <p className='text-value'>{item.custo}</p></span>
@@ -32,7 +34,7 @@ const Card = ({item}) => {
                 <span className='card-text'><svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.916565 15.716V1.82715H3.32427V0.283936H4.92941V1.82715H11.3499V0.283936H12.9551V1.82715H15.3628V7.99998H13.7577V6.45677H2.5217V14.1728H8.13968V15.716H0.916565ZM16.2657 11.858L14.5602 10.2183L15.7039 9.11881L17.4093 10.7585L16.2657 11.858ZM9.74481 16.4876V14.848L13.9984 10.7585L15.7039 12.3981L11.4503 16.4876H9.74481ZM2.5217 4.91356H13.7577V3.37036H2.5217V4.91356Z" fill="#6A6180"/>
                 </svg>Criado em: <p className='text-value'>{`${dia} de ${mes} ${ano}`}</p></span>
-                <button >iniciar</button>
+                <button onClick={openWatch}>iniciar</button>
                 </div>
               </div>
           </div>

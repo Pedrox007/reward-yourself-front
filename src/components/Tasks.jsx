@@ -2,46 +2,43 @@ import React, { useState } from 'react'
 import Layout from './Layout'
 import CardList from './CardList'
 import Modal from './Modal'
+import SideNav from './SideNav'
+import {TaskProvider} from '../context/TaskContext'
 import '../styles/main.scss'
 
 const Tasks = () => {
-  const [tasks,setTasks]=useState([])
   const [isOpen,setIsOpen]=useState(false)
-  const [data,setData]=useState({})
+  const [isOpenWatch,setIsOpenWatch]=useState(false)
 
 
-  function handleChange(e){
-    const id = e.target.id
-    const value = e.target.value
-    setData(values=> ({...values,[id]:value}))
-  }
-  function handleDelete(tarefa){
-    setTasks(tasks.filter(task => task.tarefa !== tarefa))
-  }
-  function openModal(){
-    setIsOpen(true) 
-  }
-  function closeModal(){
-    setIsOpen(false)
-  }
-  function sendData(){
-    setTasks([...tasks,data])
-    setData({})
-  }
+  const openModal=()=>setIsOpen(true) 
+  const closeModal=()=>setIsOpen(false)
+
+  
+
+  const openWatch=()=>setIsOpenWatch(true)
+  const closeWatch=()=>setIsOpenWatch(false)
+
   return (
-    <div>
-      <Layout>
-        <Modal isOpen={isOpen} 
-        handleChange={handleChange} 
-        closeModal={closeModal} 
-        sendData={sendData}/>
-        <div className='title-task'>
-          <h1>Suas Tarefas</h1> <button onClick={openModal}>
-            <i className="bi bi-plus-circle"></i></button>
-        </div>       
-        <CardList tasks={tasks}/> 
-      </Layout>
-    </div>
+
+      <TaskProvider >
+        <Layout>
+          <SideNav />
+          <Modal isOpen={isOpen}
+          closeModal={closeModal}/>
+          <div className='title-task'>
+            <h1>Suas Tarefas</h1>
+            <button onClick={openModal}>
+              <i className="bi bi-plus-circle">
+            </i></button>
+          </div>
+          <CardList
+          isOpenWatch={isOpenWatch}
+          openWatch={openWatch}
+          closeWatch={closeWatch}
+          />
+        </Layout>
+      </TaskProvider>
   )
 }
 export default Tasks
