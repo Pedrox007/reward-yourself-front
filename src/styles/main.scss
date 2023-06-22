@@ -22,11 +22,12 @@
   justify-content:$justify;
   align-items:$align;
 }
-@mixin font($size,$weight,$line-height,$font-family:Poppins,$color:var.$font-color){
+@mixin font($size,$weight,$line-height,$font-family:Poppins,$color:var.$font-color,$spacing:0px){
   font-family:$font-family ;
   font-size: $size;
   font-weight: $weight;
   line-height: $line-height;
+  letter-spacing: $spacing;
   color:$color;
 }
 @mixin input--block($p){
@@ -39,7 +40,7 @@
   background-color:var.$text-input-color;
 }
 @mixin input($width){
-  font-size: 13px;
+  font-size: 0.8rem;
   width:$width;
   border:none;
   outline: none;
@@ -73,7 +74,7 @@ span{
 .title-task{
   @include flex(space-between,center,1rem);
   h1{
-    @include font(1.5rem,600,34px);
+    @include font(1.5rem,600,34px,Poppins,var.$font-color,1px);
     color:var.$font-color;
   }
   button{

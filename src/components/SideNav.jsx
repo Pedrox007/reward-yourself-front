@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom"
-import {TaskContext} from '../context/TaskContext'
 import '../styles/sidenav.scss'
 import { useContext } from "react"
 
-const SideNav = () => {
-  const {isOpenNav,closeNav} = useContext(TaskContext)
+const SideNav = ({isOpenNav,closeNav}) => {
   
 if(isOpenNav){
   return (

@@ -1,11 +1,10 @@
 import React,{useContext} from 'react'
-import {TaskContext} from '../context/TaskContext'
 import '../styles/navbar.scss'
 import coins_img from '../assets/coins.png'
 import icon from '../assets/icon.png'
 
- const NavBar = ({coins}) => {
-  const {isOpenNav,openNav} = useContext(TaskContext)
+ const NavBar = ({coins,openNav}) => {
+
   return (
     <>
     <nav className='navbar'>

@@ -1,10 +1,13 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext} from 'react'
 import {TaskContext} from '../context/TaskContext'
+import {RewardContext} from '../context/RewardContext'
 import Form from './Form'
 import '../styles/modal.scss'
 
-const Modal = ({isOpen,closeModal}) => {
-const {sendData,handleChange}= useContext(TaskContext)
+const Modal = ({isOpen,closeModal,type}) => {
+const context = type=="task"? TaskContext : RewardContext;
+console.log(type)
+const {sendData,handleChange}= useContext(context)
 if(isOpen){
   return (
     <>

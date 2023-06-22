@@ -1,20 +1,16 @@
 @use './vars.scss' as var;
-@use 'main.scss' as m;
+@use './main.scss' as m;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 
 .login-layout{
-  @include m.flex(center,center,1rem,);
+  @include m.flex(center,center,0rem);
 }
 .container-login{
-    min-height:calc(90vh - 40px * 2);
-    width: 80%;
+    min-height:100vh;
+    min-width: 100%;
     display:grid;
     grid-template-columns:50% 50%;
-    border-radius:10;
-    box-shadow:5px 5px 5px rgba(0,0,0,.212); 
-    overflow:hidden;
-    margin-top:40px;
   }
  
   .link{
@@ -50,10 +46,10 @@
     background-image:url('../assets/facebook.svg');
   }
   .left{
-    @include m.flex(center,center);
+    @include m.flex(center,center,1rem,column);
     background-color:var.$bg-yellow;
     img{
-    width:80%;
+    width:100%;
     }
   }
   .right {
@@ -71,19 +67,25 @@
      @include m.input--block(0.5rem);
       
       label{
+      font-size: 0.9rem;
       margin-left:12px;
       font-style: normal;
       text-align:left;
       color:var.$font-color;
     }
-      &:nth-child(even){
+      
+      &:nth-child(n + 3){
+        border-top-right-radius:0px;
+        border-top-left-radius:0px;
+      }
+      &:nth-child(n + 2 ){
         border-bottom-right-radius:0px;
         border-bottom-left-radius:0px;
       }
-      &:nth-child(odd){
-        border-top-left-radius:0px;
-        border-top-right-radius:0px;
-      }
+     &.last{
+      border-bottom-right-radius:4px;
+      border-bottom-left-radius:4px;
+     }
     }
     .check{
       font-size:12px;
@@ -102,15 +104,20 @@
     .overlay{
       @include m.font(20px,700,20px,Maven Pro,var.$primary-color);
       position: absolute;
-      bottom: 15%;
+      bottom: 10%;
       background: rgba(0, 0, 0, 0.0); 
       width: 100%;
       opacity:1;
-      padding: 20px;
+      padding: 1rem;
       text-align: center;
+      max-width: 25rem;
       span{
         color:var.$primary-color-dark;
         font-size: inherit;
+        img{
+          max-width: 1rem;
+    
+        }
       }
     }
     input{
@@ -143,7 +150,10 @@
          accent-color: var.$primary-color;
          }
        } 
-       
+       .m{
+        margin: 1rem;
+       }
+
 @media (max-width:762px){
          .container{
          grid-template-columns:auto;

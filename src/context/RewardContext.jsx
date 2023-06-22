@@ -1,9 +1,9 @@
 import { createContext, useState } from "react";
 
-export const TaskContext = createContext()
+export const RewardContext = createContext()
 
-export const TaskProvider =({children})=>{
-    const [tasks,setTasks] =useState([])
+export const RewardProvider =({children})=>{
+    const [rewards,setRewards] =useState([])
     const [data,setData]=useState({})
     
 
@@ -14,20 +14,18 @@ export const TaskProvider =({children})=>{
       }
     
       function handleDelete(tarefa){
-        setTasks(tasks.filter(task => task.tarefa !== tarefa))
+        setRewards(rewards.filter(reward => reward.tarefa !== tarefa))
       }
   
       function sendData(){
-        setTasks([...tasks,data])
+        setRewards([...rewards,data])
         setData({})
       }
-      const openNav=()=>setIsOpenNav(true) 
-      const closeNav=()=>setIsOpenNav(false)
 
     return (
-        <TaskContext.Provider value={{ tasks,data, setTasks,handleChange,
+        <RewardContext.Provider value={{ rewards,data, setRewards,handleChange,
         setData,sendData}}>
           {children}
-        </TaskContext.Provider>
+        </RewardContext.Provider>
       );
 } 

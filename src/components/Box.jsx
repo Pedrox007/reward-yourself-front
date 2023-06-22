@@ -1,5 +1,5 @@
-import React from 'react'
 import woman from '../assets/woman.png'
+import icon from '../assets/icon.png'
 import '../styles/login.scss'
 
   const LoginBox =()=>{
@@ -10,7 +10,7 @@ import '../styles/login.scss'
        <div className='left'>
          <img src={woman}/>
          <div className='overlay'>
-          <h2>Reward <span>Yourself</span></h2>
+          <h2><span><img src={icon} alt="icon" /></span>Reward <span>Yourself</span></h2>
          </div>
        </div>
      
@@ -18,18 +18,18 @@ import '../styles/login.scss'
         <form>
         <h1>Fazer login</h1>
           <div className='input-block'>
-            <label for="email">E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <input type="email" />
           </div>
      
-           <div className='input-block'>
-            <label for="senha">Senha</label>
+           <div className='input-block last'>
+            <label htmlFor="senha">Senha</label>
             <input type="password" />
            </div>
      
             <div className='check'>
               <input type="checkbox" name="lembrar-me" />
-              <label for="lembrar-se">Lembrar-me <a>Esqueci minha senha</a></label>
+              <label htmlFor="lembrar-se">Lembrar-me <a>Esqueci minha senha</a></label>
             </div>
      
           <input type='submit' value='Entrar'/>

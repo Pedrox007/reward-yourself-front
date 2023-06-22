@@ -1,22 +1,26 @@
-@use 'vars.scss' as var;
-@use 'main.scss' as m;
+@use './vars.scss' as var;
+@use './main.scss' as m;
 
 li{
     list-style: none;
 }
 
 .card-container{
-    padding: 1rem;
+    padding: 0rem;
     margin: 0rem;
     max-width: 28rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .card-header{
-    @include m.font(16px,700,20px);
-    @include m.flex(space-between,center,0rem);
+    @include m.flex(center,center,0rem);
+    max-height: 46px;
     margin-bottom: 0rem;
+    h4{
+        @include m.font(1.2rem,700,20px,Poppins,#555);
+    }
     span{
         display: flex;
-        justify-self: end;
+        justify-self: flex-end;
     }
     svg{
         max-width: 21.38px;
@@ -24,7 +28,7 @@ li{
     }
 }
 h4{
-    @include m.font(16px,400,24px);
+    @include m.font(16px,400,24px,1px);
     color: var.$font-color;
 }
 .item{
@@ -45,15 +49,14 @@ h4{
         @include m.flex(start,start,1rem,column);
         background-color: rgba(237, 237, 237, 0.66);
         button{
-            margin-top: 1rem;
+            @include m.font(0.7rem,700,20px,Poppins,#ffff,0.50px);
+            margin: 0rem 0rem 0rem 10rem ;
             background-color:var.$primary-color;
             border-color: transparent;
-            border-radius:4px;
+            border-radius:8px;
             color:var.$bg-form;
-            font-size:0.8rem;
-            font-weight:bold;
-            padding:0.5rem;
-            min-width:100%;
+            padding:0.1rem 0.1rem;
+            width:4rem;
         }
         span{
             @include m.flex(start,center,0rem);
@@ -68,7 +71,7 @@ h4{
         
     }
     .card-text{
-        @include m.font(1rem,700,24px);
+        @include m.font(1rem,700,24px,36px);
         color: var.$font-color-card;
         display: block;
         margin-left: 0px;
@@ -78,9 +81,14 @@ h4{
         @include m.font(1rem,400,24px);
         margin-left: 8px;
     }
+    .status-value{
+        color: var.$primary-color;
+        font:inherit;
+        margin-left:0.5rem;
+    }
     .card-left{
         @include m.flex(center,center,1rem,column);
-        background-color: var.$bg-yellow;
+        background-color: #ffff;
         img{  max-width: 100%; }
     }
 }
