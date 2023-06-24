@@ -4,6 +4,9 @@
 //https://github.com/Pedrox007/reward-yourself-front
 
 .sidenav {
+  @include m.flex(start,start,1rem,column);
+  @include m.font(0.5rem,400,24px,Poppins,#FFFFFF);
+    gap:1.5rem;
     height: 100%; 
     width: 250px; 
     position: fixed; 
@@ -14,14 +17,50 @@
     overflow-x: hidden; 
     padding-top: 60px; 
     transition: 0.5s; 
-    @include m.font(0.8rem,400,24px,var.$font-color);
-    a {
-        padding: 8px 8px 8px 32px;
+
+    .nav-logo{
+      @include m.flex(start,start,0rem);
+      margin: 0rem 0rem 1rem;
+      img{max-width: 3rem;
+      margin-right: 0.5rem;}
+      h4{
+        max-width: 2rem;
+        margin: 0rem;
+        @include m.font(1.3rem,500,25px,Maven Pro,#FFFFFF,1px);
+       }
+    }
+    
+   
+    .link {
+      @include m.flex(center,center,0rem);
+      margin: 0rem;
+      a{
+      span{@include m.font(0.8rem,400,24px,poppins,#FFFFFF);}
+      @include m.flex(center,center,0rem);
         text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
         transition: 0.3s;
+        padding-left: 0.1rem;
+        max-height: 2rem;
+        &.active{
+          border: solid var.$primary-color;
+          border-top: 0px;
+          border-right: 0px;
+          border-bottom: 0px;
+         }
+        
+      }
+
+        img{
+          max-width: 1.7rem;
+          margin-right: 0.5rem;
+        }
+    }
+      .avatar{
+        @include m.flex(start,center,0rem);
+        margin-bottom: 1rem;
+        i{font-size: 2rem;}
+        span{font-size: 1rem;
+        color: #FFFFFF;}
       }
       &:hover{color: #f1f1f1;}
 
@@ -33,8 +72,6 @@
         margin-left: 50px;
       }
   }
-  
-  .sidenav
  
   .main {
     transition: margin-left .5s;

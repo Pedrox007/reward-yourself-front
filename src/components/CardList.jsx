@@ -3,7 +3,7 @@ import {TaskContext} from '../context/TaskContext'
 import {RewardContext} from '../context/RewardContext'
 import Card from './Card'
 import CardReward from './CardReward'
-import EmptY from './Empyt'
+import Empty from './Empyt'
 
 const CardList = ({openWatch,isOpenWatch,closeWatch,type}) => {
   const context = type=="task"? TaskContext : RewardContext;
@@ -16,7 +16,7 @@ const CardList = ({openWatch,isOpenWatch,closeWatch,type}) => {
   }else
   list=[...temp.rewards]
 
-  if(list.length==0) return <EmptY/>
+  if(list.length==0) return <Empty  type={type}/>
   return (
     <>
           <ul className='card-list'>          

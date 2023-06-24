@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Layout from'./Layout'
-import CardList from'./CardList'
-import Modal from './Modal'
+import Layout from'../components/Layout'
+import CardList from'../components/CardList'
+import Modal from '../components/Modal'
 import {RewardProvider} from '../context/RewardContext'
 
 const Rewards = () => {

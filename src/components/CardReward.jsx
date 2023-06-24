@@ -6,7 +6,7 @@ import clock from '../assets/clock.svg'
 const CardReward = ({item}) => {
   return (
     <div className='card-container'>
-      <div className='card-header'><h4>{item.tarefa}</h4> 
+      <div className='card-header'><h4>{item.recompensa}</h4> 
         <span><img src={calendar} alt="calendar" /></span>
       </div>
           <div className="card">
@@ -17,7 +17,7 @@ const CardReward = ({item}) => {
               <div className="card-right">
                 <div className="card-body">
                 <span className='card-text'><img src={coin_icon} alt="coin_icon" />Moedas:
-                 <p className='text-value'>{item.custo}</p>
+                 <p className='text-value'>{item.tempo}</p>
                 </span>
                 <span className='card-text'><img src={clock} alt="coin_icon" />Tempo:
                  <p className='text-value'>{item.custo}</p>

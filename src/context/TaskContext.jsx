@@ -8,9 +8,10 @@ export const TaskProvider =({children})=>{
     
 
     function handleChange(e){
-        const id = e.target.id
+        const name = e.target.name
         const value = e.target.value
-        setData(values=> ({...values,[id]:value}))
+        setData(values=> ({...values,[name]:value}))
+        console.log(data)
       }
     
       function handleDelete(tarefa){
@@ -21,8 +22,6 @@ export const TaskProvider =({children})=>{
         setTasks([...tasks,data])
         setData({})
       }
-      const openNav=()=>setIsOpenNav(true) 
-      const closeNav=()=>setIsOpenNav(false)
 
     return (
         <TaskContext.Provider value={{ tasks,data, setTasks,handleChange,

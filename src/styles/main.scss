@@ -87,7 +87,7 @@ span{
 }
 
 .layout{
-  @include flex(start,space-between ,10rem 1rem 2rem 1rem,column);
+  @include flex(start,space-between ,5rem 1rem 0rem 1rem,column);
 }
 
 

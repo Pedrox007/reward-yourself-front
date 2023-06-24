@@ -8,9 +8,10 @@ export const RewardProvider =({children})=>{
     
 
     function handleChange(e){
-        const id = e.target.id
+        const name = e.target.name
         const value = e.target.value
-        setData(values=> ({...values,[id]:value}))
+        setData(values=> ({...values,[name]:value}))
+        console.log(data)
       }
     
       function handleDelete(tarefa){

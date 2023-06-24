@@ -11,7 +11,7 @@ let dia= data.toString().slice(8,11)
 let mes= data.toString().slice(4,7)
 let ano= data.toString().slice(10,16)
 
-const Card = ({item,openWatch,isOpenWatch,closeWatch,card_icon}) => {
+const Card = ({item,openWatch,isOpenWatch,closeWatch}) => {
   return (
     <>
     <StopWatch time={item.tempo} isOpenWatch={isOpenWatch} closeWatch={closeWatch}/>
