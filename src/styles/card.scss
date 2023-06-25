@@ -50,14 +50,14 @@ h4{
         @include m.flex(start,start,1rem,column);
         background-color: rgba(237, 237, 237, 0.66);
         button{
-            @include m.font(0.7rem,700,20px,Poppins,#ffff,0.50px);
+            @include m.font(0.7rem,700,20px,Poppins,#ffff,0.70px);
             margin: 0rem 0rem 0rem 10rem ;
             background-color:var.$primary-color;
             border-color: transparent;
             border-radius:8px;
             color:var.$bg-form;
-            padding:0.1rem 0.1rem;
-            width:4rem;
+            padding:0.1rem 0.2rem;
+            max-width:4.5rem;
         }
         span{
             @include m.flex(start,center,0rem);
