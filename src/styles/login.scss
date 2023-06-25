@@ -60,25 +60,36 @@
       h1{
         align-self: start;
         margin: 1rem 0rem;
+        color:var.$font-color;
       }
     }
-    
+    .half-size{
+      max-width: 50%;
+      border-radius: 0px;
+    }
+    .grup{
+      @include m.flex(center,center,0rem,row);
+     
+    }
     .input-block{
      @include m.input--block(0.5rem);
       
       label{
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       margin-left:12px;
       font-style: normal;
       text-align:left;
       color:var.$font-color;
     }
-      
+      &.group-item{
+        border-top-right-radius:0px;
+        border-top-left-radius:0px;
+      }
       &:nth-child(n + 3){
         border-top-right-radius:0px;
         border-top-left-radius:0px;
       }
-      &:nth-child(n + 2 ){
+      &:nth-child(n + 1 ){
         border-bottom-right-radius:0px;
         border-bottom-left-radius:0px;
       }
@@ -132,8 +143,9 @@
            background-color:var.$primary-color;
            border-radius:4px;
            color:var.$bg-form;
-           font-size:0.8rem;
+           font-size:1rem;
            font-weight:bold;
+           letter-spacing: 0.1rem;
            padding:0.5rem;
            min-width:100%;
            cursor: pointer;
@@ -151,7 +163,7 @@
          }
        } 
        .m{
-        margin: 1rem;
+        margin: 2rem;
        }
 
 @media (max-width:762px){

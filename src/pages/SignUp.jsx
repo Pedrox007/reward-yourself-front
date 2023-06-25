@@ -10,11 +10,23 @@ const SignUp = () => {
     
      <div className='right'>
        <form>
-       <h1>Cadastre-se</h1>
-         <div className='input-block'>
+       <h1>Crie sua conta</h1>
+         <div className='input-block first'>
            <label htmlFor="email">Usuário</label>
            <input type="text" />
          </div>
+
+         <div className="grup">
+           <div className='input-block half-size group-item'>
+             <label htmlFor="nome">Nome</label>
+             <input type="text" />
+           </div>
+           <div className='input-block half-size group-item'>
+             <label htmlFor="sobrenome">Sobrenome</label>
+             <input type="text" />
+           </div>
+         </div>
+
          <div className='input-block'>
            <label htmlFor="email">E-mail</label>
            <input type="email" />
@@ -31,10 +43,7 @@ const SignUp = () => {
     
     
          <input  className='m'type='submit' value='Cadastrar'/>
-         <div className="social-box">
-         <div className='logo'><span className='google'></span></div>
-         <div className='logo'><span className='facebook'></span></div>
-         </div>
+         
       </form>
      </div>
 
