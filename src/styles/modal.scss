@@ -1,0 +1,142 @@
+@use './main.scss' as m;
+@use './vars.scss' as var;
+
+.modal{
+    @include m.flex(center,center,0rem,column);
+    position: fixed;
+    z-index: 200; 
+    inset: 0% 0%;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(63, 61, 86, 0.25);
+    overflow: auto;
+    
+   .form-conteiner{
+    width: 40vw;
+
+
+    .modal-header{
+        display:flex;
+        justify-content: end;
+        padding: 1rem;
+        background-color: var.$primary-color;
+        min-width: 100%;
+        min-height: 4rem;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        
+        i{
+            color: #FAFAFC;
+            font-size: 27px;
+        }
+    }
+    form{
+        @include m.flex(start,start,1rem,column);
+        background-color: #ffffff;
+        min-width: 100%;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        .modal-input-block{
+          min-width: 100%;
+        }
+        h1{
+            color: rgba(50, 38, 77, 1);
+        }
+        hr{
+            width: 100%;
+            border: solid 1px var.$font-color;;
+        }
+        label{  
+            margin-top: 1rem;   
+            display: block;
+            text-align: left;
+            font-size: 12px;
+            font-style: normal;
+            color:var.$font-color;
+        }
+        input{         
+            display: block;
+            height: 2.2rem;
+            min-width: 100%;
+            border: 2px solid #E6E6F0;
+            border-radius: 4px;
+            background-color: #FAFAFC;
+        }
+        textarea{
+          min-width: 100%;
+          border: 2px solid #E6E6F0;
+          border-radius: 4px;
+            background-color: #FAFAFC;
+        }
+       button{
+        margin-top: 1rem;
+        background-color:var.$primary-color;
+        border-color: transparent;
+        border-radius:4px;
+        color:var.$bg-form;
+        font-size:0.8rem;
+        font-weight:bold;
+        padding:0.5rem;
+        min-width:100%;
+       }
+    }
+   }
+    
+}
+
+.checkbox-container{
+  @include m.flex(end,start,0rem);
+  p{
+    margin: 0rem 1rem;
+    position: relative;
+    inset: 1rem 0rem 1rem 0rem;
+    color:var.$font-color;
+  }
+  width:100%;
+}
+  .container-switch {
+    width: 41px;
+    height: 21px;
+    position: relative;
+  }
+  
+  .checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  
+  .switch {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #e9e9eb;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+  }
+  
+  /* The slider */
+  .slider {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    left: calc(50% - 30px/2 - 16px);
+    top: calc(50% - 18px/2);
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15), 0px 3px 1px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+  
+  .checkbox:checked + .switch {
+    background-color: var.$primary-color;
+  }
+  
+  .checkbox:checked + .switch .slider {
+    left: calc(50% - 57px/2 + 10px);
+    top: calc(50% - 18px/2);
+  }
+  
