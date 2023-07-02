@@ -1,30 +1,36 @@
-import React,{useContext} from 'react'
-import '../styles/navbar.scss'
-import coins_img from '../assets/coins.png'
-import icon from '../assets/icon.png'
+import React, { useContext } from 'react';
+import '../styles/navbar.scss';
+import coins_img from '../assets/coins.png';
+import icon from '../assets/icon.png';
 
- const NavBar = ({coins,openNav}) => {
-
+const NavBar = ({ coins, openNav }) => {
   return (
     <>
-    <nav className='navbar'>
+      <nav className="navbar">
         <ul>
-          <li><span className='menu-icon' onClick={openNav}><i className="bi bi-list "></i></span>
-          <img src={icon} alt="" />
-          <span className='nav-logo'>Reward Yourself</span>
+          <li>
+            <span className="menu-icon" onClick={openNav}>
+              <i className="bi bi-list "></i>
+            </span>
+            <img src={icon} alt="" />
+            <span className="nav-logo">Reward Yourself</span>
           </li>
-          <li >
-         
+          <li>
             <div className="input-block">
-              <label htmlFor="search" >Filtrar</label>
-              <input type="search" placeholder='Digite a tarefa que deseja realizar' id="search" />
+              <label htmlFor="search">Filtrar</label>
+              <input type="search" placeholder="Digite a tarefa que deseja realizar" id="search" />
             </div>
-            <div className="search"><i className="bi bi-search"></i></div>
+            <div className="search">
+              <i className="bi bi-search"></i>
+            </div>
           </li>
-          <button className='coins-button'><img src={coins_img} alt="coins" />{coins}</button>
+          <button className="coins-button">
+            <img src={coins_img} alt="coins" />
+            {coins}
+          </button>
         </ul>
-    </nav>
+      </nav>
     </>
-  )
-}
+  );
+};
 export default NavBar;
