@@ -4,6 +4,7 @@ import Tasks from './pages/Tasks';
 import LoginBox from './pages/Box';
 import SignUp from './pages/SignUp';
 import Rewards from './pages/Rewards';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Route path="cadastro" Component={SignUp} />
         <Route path="tarefas" Component={Tasks} />
         <Route path="recompensas" Component={Rewards} />
-        <Route path="*" element={<h1>404</h1>} />
+        <Route path="*" Component={NotFound} />
       </Routes>
     </Router>
   );

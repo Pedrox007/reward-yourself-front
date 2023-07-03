@@ -1,0 +1,28 @@
+@use './main.scss' as m;
+@use './vars.scss' as var;
+
+main.not-found {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  div {
+    max-width: 400px;
+  }
+
+  button {
+    margin-top: 1rem;
+    background-color: var.$primary-color;
+    border-color: transparent;
+    border-radius: 4px;
+    color: var.$bg-form;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    max-width: 80%;
+    width: 400px;
+  }
+}
