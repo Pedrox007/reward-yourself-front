@@ -19,12 +19,14 @@ const Tasks = () => {
     <TaskProvider>
       <Layout>
         <Modal isOpen={isOpen} closeModal={closeModal} type={'task'} />
+
         <div className="title-task">
           <h1>Suas Tarefas</h1>
           <button onClick={openModal}>
             <i className="bi bi-plus-circle"></i>
           </button>
         </div>
+
         <CardList
           isOpenWatch={isOpenWatch}
           openWatch={openWatch}

@@ -7,7 +7,7 @@ const CardReward = ({ item }) => {
   return (
     <div className="card-container">
       <div className="card-header">
-        <h4>{item.recompensa}</h4>
+        <h4>{item.title}</h4>
         <span>
           <img src={calendar} alt="calendar" />
         </span>
@@ -21,12 +21,12 @@ const CardReward = ({ item }) => {
             <span className="card-text">
               <img src={coin_icon} alt="coin_icon" />
               Moedas:
-              <p className="text-value">{item.tempo}</p>
+              <p className="text-value">{item.cost}</p>
             </span>
             <span className="card-text">
               <img src={clock} alt="coin_icon" />
               Tempo:
-              <p className="text-value">{item.custo}</p>
+              <p className="text-value">{item.duration}</p>
             </span>
             <button>COMPRAR</button>
           </div>
