@@ -1,7 +1,9 @@
 import React from 'react';
-import '../styles/empty.scss';
+
 import empty_list from '../assets/empy_list.png';
 import reward_empty from '../assets/empty_reward.png';
+
+import '../styles/empty.scss';
 
 const Empty = ({ type }) => {
   const src = type == 'task' ? empty_list : reward_empty;

@@ -10,15 +10,18 @@ const op1 = [
   { label: 'Custo', name: 'custo', type: 'number' },
   { label: 'Descrição', name: 'descricao', type: 'textarea' }
 ];
+
 const op2 = [
   { label: 'Recompensa', name: 'recompensa', type: 'text' },
-  { label: 'Tempo (hora)', name: 'tempo', type: 'number' },
-  { label: 'Custo', name: 'custo', type: 'number' }
+  { label: 'Tempo (00:00)', name: 'tempo', type: 'number' },
+  { label: 'Custo', name: 'custo', type: 'number' },
+  { label: 'Descrição', name: 'descricao', type: 'textarea' }
 ];
 
 const Modal = ({ isOpen, closeModal, type }) => {
   const context = type == 'task' ? TaskContext : RewardContext;
   const inputs = type == 'task' ? op1 : op2;
+
   const { sendData, handleChange } = useContext(context);
 
   if (isOpen) {
@@ -29,6 +32,7 @@ const Modal = ({ isOpen, closeModal, type }) => {
             <div className="modal-header">
               <i onClick={closeModal} className="bi bi-x-lg"></i>
             </div>
+
             <Form
               inputs={inputs}
               closeModal={closeModal}

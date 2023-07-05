@@ -7,33 +7,49 @@ import Empty from './Empyt';
 
 const CardList = ({ openWatch, isOpenWatch, closeWatch, type }) => {
   const context = type == 'task' ? TaskContext : RewardContext;
+
   const CardType = type == 'task' ? Card : CardReward;
+
   let temp = useContext(context);
 
   let list = [];
+
   if (type == 'task') {
     list = [...temp.tasks];
-  } else list = [...temp.rewards];
+  } else {
+    list = [...temp.rewards];
+  }
 
-  if (list.length == 0) return <Empty type={type} />;
-  return (
-    <>
-      <ul className="card-list">
-        {list.map((item, index) => {
-          return (
-            <li key={index}>
-              <CardType
-                item={item}
-                openWatch={openWatch}
-                isOpenWatch={isOpenWatch}
-                closeWatch={closeWatch}
-              />
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
+  if (temp.loadingFetch) {
+    return (
+      <div className="spin">
+        <i className="bi bi-arrow-clockwise" style={{ fontSize: 50 }} />
+      </div>
+    );
+  }
+
+  if (list.length == 0) {
+    return <Empty type={type} />;
+  } else {
+    return (
+      <>
+        <ul className="card-list">
+          {list.map((item, index) => {
+            return (
+              <li key={index}>
+                <CardType
+                  item={item}
+                  openWatch={openWatch}
+                  isOpenWatch={isOpenWatch}
+                  closeWatch={closeWatch}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    );
+  }
 };
 
 export default CardList;

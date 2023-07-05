@@ -4,9 +4,14 @@ import Checkbox from './Checkbox';
 const Form = ({ sendData, handleChange, closeModal, inputs }) => {
   const checkbox = inputs[0].label == 'Tarefa' ? <Checkbox handleChange={handleChange} /> : <></>;
 
-  function resolve() {
-    sendData();
-    closeModal();
+  async function resolve() {
+    try {
+      await sendData();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+      alert('Erro ao criar tarefa');
+    }
   }
 
   return (
@@ -15,8 +20,10 @@ const Form = ({ sendData, handleChange, closeModal, inputs }) => {
         <h1>Adicionar {inputs[0].label}</h1>
         <hr />
         {checkbox}
+
         {inputs.map((item, index) => {
           let input = <input onChange={handleChange} type={item.type} name={item.name} />;
+
           if (item.type == 'textarea') {
             input = (
               <textarea rows="4" cols="30" name="descricao" onChange={handleChange}></textarea>
@@ -29,6 +36,7 @@ const Form = ({ sendData, handleChange, closeModal, inputs }) => {
             </div>
           );
         })}
+
         <button type="button" onClick={resolve}>
           Adicionar
         </button>
