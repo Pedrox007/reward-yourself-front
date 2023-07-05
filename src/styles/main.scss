@@ -2,92 +2,142 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 
-*{
-  padding:0;
-  margin:0;
-  box-sizing:border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   font-family: Poppins, sans-serif;
 }
-@mixin flex($justify,$align,$padding:1rem,$direction:row){
-  display:flex;
-  justify-content:$justify;
-  align-items:$align;
+@mixin flex($justify, $align, $padding: 1rem, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
   flex-direction: $direction;
-  padding:$padding;
+  padding: $padding;
 }
-@mixin grid($columns,$rows,$gap,$justify,$align){
+@mixin grid($columns, $rows, $gap, $justify, $align) {
   display: grid;
   grid-template-columns: $columns;
   grid-template-rows: $rows;
-  justify-content:$justify;
-  align-items:$align;
+  justify-content: $justify;
+  align-items: $align;
 }
-@mixin font($size,$weight,$line-height,$font-family:Poppins,$color:var.$font-color,$spacing:0px){
-  font-family:$font-family ;
+@mixin font(
+  $size,
+  $weight,
+  $line-height,
+  $font-family: Poppins,
+  $color: var.$font-color,
+  $spacing: 0px
+) {
+  font-family: $font-family;
   font-size: $size;
   font-weight: $weight;
   line-height: $line-height;
   letter-spacing: $spacing;
-  color:$color;
+  color: $color;
 }
-@mixin input--block($p){
-  padding:0.6rem ;
-  width:100%;
+@mixin input--block($p) {
+  padding: 0.6rem;
+  width: 100%;
   max-height: 4rem;
-  margin:0px 0px 0px 0px;
-  border:1px solid #E6E6F0;
+  margin: 0px 0px 0px 0px;
+  border: 1px solid #e6e6f0;
   border-radius: 4px;
-  background-color:var.$text-input-color;
+  background-color: var.$text-input-color;
 }
-@mixin input($width){
+@mixin input($width) {
   font-size: 0.8rem;
-  width:$width;
-  border:none;
+  width: $width;
+  border: none;
   outline: none;
-  background-color:#FAFAFC;
-  color:var.$font-color;
+  background-color: #fafafc;
+  color: var.$font-color;
 }
 
-html{
+html {
   height: 100%;
 }
-body{
+body {
   min-width: 100%;
   min-height: 100vh;
 }
-span{
-  margin:1rem 1rem;
-  text-align:center;
-  font-size:12px;
-  color:var.$font-color;
+span {
+  margin: 1rem 1rem;
+  text-align: center;
+  font-size: 12px;
+  color: var.$font-color;
 }
 
-.logo{
-  @include flex(center,center,0px 14px);
-  max-height:3rem;
-  max-width:5rem;
-  border:1px solid var.$font-color;
-  border-radius:4px;
+.logo {
+  @include flex(center, center, 0px 14px);
+  max-height: 3rem;
+  max-width: 5rem;
+  border: 1px solid var.$font-color;
+  border-radius: 4px;
   margin: 0px 12px;
 }
 
-.title-task{
-  @include flex(space-between,center,1rem);
-  h1{
-    @include font(1.5rem,600,34px,Poppins,var.$font-color,1px);
-    color:var.$font-color;
+.title-task {
+  @include flex(space-between, center, 1rem);
+  h1 {
+    @include font(1.5rem, 600, 34px, Poppins, var.$font-color, 1px);
+    color: var.$font-color;
   }
-  button{
+  button {
     background-color: transparent;
     border: none;
     color: var.$font-color;
-    &:active{ color: var.$primary-color;}
+    &:active {
+      color: var.$primary-color;
+    }
     font-size: 3rem;
   }
 }
 
-.layout{
-  @include flex(start,space-between ,5rem 1rem 0rem 1rem,column);
+.layout {
+  @include flex(start, space-between, 5rem 1rem 0rem 1rem, column);
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
+.spin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  font-size: 20px;
+  animation: spin 1s linear infinite;
+  .primary {
+    color: var.$primary-color-dark;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.timer-button {
+  background-color: var.$primary-color;
+  border-color: transparent;
+}
+
+.timer-button:active {
+  background-color: var.$primary-color-dark;
+}
