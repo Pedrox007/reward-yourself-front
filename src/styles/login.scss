@@ -80,6 +80,7 @@ form {
     text-align: left;
     color: var.$font-color;
   }
+
   &.group-item {
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
@@ -131,14 +132,32 @@ form {
     }
   }
 }
+.login-layout {
+  button {
+    @include m.input(100%);
+
+    &[type='submit'] {
+      background-color: var.$primary-color;
+      border-radius: 4px;
+      color: var.$bg-form;
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: 0.1rem;
+      padding: 0.5rem;
+      min-width: 100%;
+      cursor: pointer;
+    }
+  }
+}
 input {
   @include m.input(100%);
-  &[type='email'] {
-    padding: 0px 12px 0px 12px;
-  }
-  &[type='password'] {
-    padding: 0px 12px 0px 12px;
-  }
+  padding: 0px 12px;
+  // &[type='email'] {
+  //   padding: 0px 12px 0px 12px;
+  // }
+  // &[type='password'] {
+  //   padding: 0px 12px 0px 12px;
+  // }
   &[type='submit'] {
     background-color: var.$primary-color;
     border-radius: 4px;
@@ -154,8 +173,8 @@ input {
     background-color: #ffff;
     margin: 0;
     font-family: inherit;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
     border: 1px solid;
     border-radius: 4px;
     outline: none;
