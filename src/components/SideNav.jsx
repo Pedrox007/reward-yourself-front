@@ -1,10 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import '../styles/sidenav.scss';
+
+import { useAuth } from '../context/AuthContext';
+
 import tasks_filled from '../assets/tasks_solid.svg';
 import icon from '../assets/icon.png';
 import reward_filled from '../assets/reward_filled.svg';
 
+import '../styles/sidenav.scss';
+
 const SideNav = ({ isOpenNav, closeNav }) => {
+  const { loginResponse, setLoginResponse } = useAuth();
   if (isOpenNav) {
     return (
       <div className="sidenav">
@@ -15,9 +20,10 @@ const SideNav = ({ isOpenNav, closeNav }) => {
           <img src={icon} alt="" />
           <h4>Rewad Yourself</h4>
         </span>
+
         <div className="avatar">
           <i className="bi bi-person-circle"></i>
-          <span>nome</span>
+          <span>{loginResponse.name}</span>
         </div>
 
         <span className="link">
@@ -28,9 +34,22 @@ const SideNav = ({ isOpenNav, closeNav }) => {
             <span>Recompensas</span>
           </NavLink>
         </span>
+
         <span className="link">
           <NavLink to="/tarefas" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
             <img src={tasks_filled} alt="img" /> <span>Tarefas</span>
+          </NavLink>
+        </span>
+
+        <span className="link">
+          <NavLink
+            onClick={() => {
+              setLoginResponse({ access: null, refresh: null, name: null });
+            }}
+            to="/login"
+            className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
+            <i className="bi bi-box-arrow-left"></i>
+            <span>Sair</span>
           </NavLink>
         </span>
       </div>

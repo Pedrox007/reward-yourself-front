@@ -1,8 +1,45 @@
-import woman from '../assets/woman.png';
-import icon from '../assets/icon.png';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { AuthService } from '../service/Auth.service';
+import { useAuth } from '../context/AuthContext';
+
 import '../styles/login.scss';
 
+import woman from '../assets/woman.png';
+import icon from '../assets/icon.png';
+
 const LoginBox = () => {
+  const { loginResponse, setLoginResponse } = useAuth();
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = React.useState(false);
+
+  const [login, setLogin] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+
+      const response = await AuthService.login(login, password);
+      if (response.data?.access) {
+        setLoginResponse(response.data);
+      }
+    } catch (error) {
+      alert(error?.response?.data?.detail || 'Erro ao fazer login');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  React.useEffect(() => {
+    if (loginResponse.access) {
+      navigate('/tarefas');
+    }
+  }, [loginResponse]);
+
   return (
     <>
       <main className="login-layout">
@@ -20,16 +57,24 @@ const LoginBox = () => {
           </div>
 
           <div className="right">
-            <form>
+            <form onSubmit={handleSubmit}>
               <h1>Fazer login</h1>
               <div className="input-block">
-                <label htmlFor="email">E-mail</label>
-                <input type="email" />
+                <label htmlFor="login">Usuário</label>
+                <input
+                  type="login"
+                  value={login}
+                  onChange={(e) => setLogin(e.currentTarget.value)}
+                />
               </div>
 
               <div className="input-block last">
                 <label htmlFor="senha">Senha</label>
-                <input type="password" />
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.currentTarget.value)}
+                />
               </div>
 
               <div className="check">
@@ -39,9 +84,22 @@ const LoginBox = () => {
                 </label>
               </div>
 
-              <input type="submit" value="Entrar" />
+              <button type="submit">
+                {loading ? (
+                  <div className="spin">
+                    <i className="bi bi-arrow-clockwise " />
+                  </div>
+                ) : (
+                  'Entrar'
+                )}
+              </button>
+
               <span>
-                Não possui conta ? <a className="link"> Registre-se</a>
+                Não possui conta ?{' '}
+                <a className="link" href="/cadastro">
+                  {' '}
+                  Registre-se
+                </a>
               </span>
               <div className="social-box">
                 <div className="logo">
