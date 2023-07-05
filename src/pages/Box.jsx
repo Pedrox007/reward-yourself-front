@@ -23,7 +23,7 @@ const LoginBox = () => {
     try {
       setLoading(true);
 
-      const response = await AuthService.login(login, password);
+      const response = await AuthService().login(login, password);
       if (response.data?.access) {
         setLoginResponse(response.data);
       }
@@ -35,7 +35,7 @@ const LoginBox = () => {
   };
 
   React.useEffect(() => {
-    if (loginResponse.access) {
+    if (loginResponse?.access) {
       navigate('/tarefas');
     }
   }, [loginResponse]);
@@ -86,8 +86,10 @@ const LoginBox = () => {
 
               <button type="submit">
                 {loading ? (
-                  <div className="spin">
-                    <i className="bi bi-arrow-clockwise " />
+                  <div className="spin-container">
+                    <div className="spin">
+                      <i className="bi bi-arrow-clockwise " />
+                    </div>
                   </div>
                 ) : (
                   'Entrar'

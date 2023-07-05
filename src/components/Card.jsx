@@ -1,19 +1,42 @@
-import '../styles/card.scss';
+import React from 'react';
+
+import StopWatch from './StopWatch';
+
 import list_icon from '../assets/list.png';
 import coin_icon from '../assets/coin_icon.png';
 import calendar from '../assets/calendar.svg';
 import calendar_2 from '../assets/calendar_2.svg';
-import StopWatch from './StopWatch';
 
-const Card = ({ item, openWatch, isOpenWatch, closeWatch }) => {
+import '../styles/card.scss';
+import { TaskContext } from '../context/TaskContext';
+
+const Card = ({ item }) => {
+  const { fetchData } = React.useContext(TaskContext);
+
   const data = Date(item.created_at);
   let dia = data.toString().slice(8, 11);
   let mes = data.toString().slice(4, 7);
   let ano = data.toString().slice(10, 16);
 
+  const [isOpenWatch, setIsOpenWatch] = React.useState(false);
+
   return (
     <>
-      <StopWatch time={item.tempo} isOpenWatch={isOpenWatch} closeWatch={closeWatch} />
+      {isOpenWatch ? (
+        <StopWatch
+          time={item.expected_duration}
+          isOpenWatch={isOpenWatch}
+          closeWatch={(refresh = false) => {
+            if (refresh) {
+              fetchData();
+            } else {
+              setIsOpenWatch(false);
+            }
+          }}
+          id={item.id}
+        />
+      ) : null}
+
       <div className="card-container">
         <div className="card-header">
           <h4>{item.title}</h4>
@@ -40,7 +63,9 @@ const Card = ({ item, openWatch, isOpenWatch, closeWatch }) => {
               <span className="card-text">
                 Status:<p className="status-value">{item.finished ? 'Finalizado' : 'Fazer'}</p>
               </span>
-              {!item.finished ? <button onClick={openWatch}>INICIAR</button> : null}
+              {!item.finished ? (
+                <button onClick={() => setIsOpenWatch(true)}>INICIAR</button>
+              ) : null}
             </div>
           </div>
         </div>

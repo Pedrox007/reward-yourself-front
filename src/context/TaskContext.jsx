@@ -23,10 +23,10 @@ export const TaskProvider = ({ children }) => {
     setTasks(tasks.filter((task) => task.tarefa !== tarefa));
   }
 
-  async function fetchData() {
+  async function fetchData(term) {
     setLoadingFetch(true);
     try {
-      const response = await TaskService(loginResponse).get();
+      const response = await TaskService(loginResponse).get(term);
       setTasks(response.data.results);
     } catch (error) {
       console.log(error);
@@ -65,7 +65,8 @@ export const TaskProvider = ({ children }) => {
         setData,
         sendData,
         loadingFetch,
-        setLoadingFetch
+        setLoadingFetch,
+        fetchData
       }}>
       {children}
     </TaskContext.Provider>

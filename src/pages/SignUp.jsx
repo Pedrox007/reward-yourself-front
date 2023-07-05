@@ -24,7 +24,7 @@ const SignUp = () => {
     try {
       setLoading(true);
 
-      const response = await AuthService.signin(
+      const response = await AuthService().signin(
         username,
         first_name,
         last_name,
@@ -99,8 +99,10 @@ const SignUp = () => {
 
               <button type="submit" className="m">
                 {loading ? (
-                  <div className="spin">
-                    <i className="bi bi-arrow-clockwise " />
+                  <div className="spin-container">
+                    <div className="spin">
+                      <i className="bi bi-arrow-clockwise " />
+                    </div>
                   </div>
                 ) : (
                   'Cadastrar'

@@ -9,7 +9,8 @@ import reward_filled from '../assets/reward_filled.svg';
 import '../styles/sidenav.scss';
 
 const SideNav = ({ isOpenNav, closeNav }) => {
-  const { loginResponse, setLoginResponse } = useAuth();
+  const { loginResponse, setLoginResponse, deleteSession } = useAuth();
+
   if (isOpenNav) {
     return (
       <div className="sidenav">
@@ -23,7 +24,7 @@ const SideNav = ({ isOpenNav, closeNav }) => {
 
         <div className="avatar">
           <i className="bi bi-person-circle"></i>
-          <span>{loginResponse.name}</span>
+          <span>{loginResponse?.name}</span>
         </div>
 
         <span className="link">
@@ -43,9 +44,7 @@ const SideNav = ({ isOpenNav, closeNav }) => {
 
         <span className="link">
           <NavLink
-            onClick={() => {
-              setLoginResponse({ access: null, refresh: null, name: null });
-            }}
+            onClick={() => deleteSession()}
             to="/login"
             className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
             <i className="bi bi-box-arrow-left"></i>

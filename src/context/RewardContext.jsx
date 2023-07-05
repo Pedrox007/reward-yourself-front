@@ -23,10 +23,10 @@ export const RewardProvider = ({ children }) => {
     setRewards(rewards.filter((reward) => reward.tarefa !== tarefa));
   }
 
-  async function fetchData() {
+  async function fetchData(term) {
     setLoadingFetch(true);
     try {
-      const response = await RewardService(loginResponse).get();
+      const response = await RewardService(loginResponse).get(term);
       setRewards(response.data.results);
     } catch (error) {
       console.log(error);
@@ -62,7 +62,8 @@ export const RewardProvider = ({ children }) => {
         setData,
         sendData,
         loadingFetch,
-        setLoadingFetch
+        setLoadingFetch,
+        fetchData
       }}>
       {children}
     </RewardContext.Provider>

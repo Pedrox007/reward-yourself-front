@@ -6,14 +6,14 @@ import '../styles/modal.scss';
 
 const op1 = [
   { label: 'Tarefa', name: 'tarefa', type: 'text' },
-  { label: 'Tempo', name: 'tempo', type: 'number' },
+  { label: 'Tempo (00:00:00)', name: 'tempo', type: 'number' },
   { label: 'Custo', name: 'custo', type: 'number' },
   { label: 'Descrição', name: 'descricao', type: 'textarea' }
 ];
 
 const op2 = [
   { label: 'Recompensa', name: 'recompensa', type: 'text' },
-  { label: 'Tempo (00:00)', name: 'tempo', type: 'number' },
+  { label: 'Tempo (00:00:00)', name: 'tempo', type: 'text' },
   { label: 'Custo', name: 'custo', type: 'number' },
   { label: 'Descrição', name: 'descricao', type: 'textarea' }
 ];

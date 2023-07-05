@@ -5,7 +5,7 @@ import Card from './Card';
 import CardReward from './CardReward';
 import Empty from './Empyt';
 
-const CardList = ({ openWatch, isOpenWatch, closeWatch, type }) => {
+const CardList = ({ type }) => {
   const context = type == 'task' ? TaskContext : RewardContext;
 
   const CardType = type == 'task' ? Card : CardReward;
@@ -22,8 +22,10 @@ const CardList = ({ openWatch, isOpenWatch, closeWatch, type }) => {
 
   if (temp.loadingFetch) {
     return (
-      <div className="spin">
-        <i className="bi bi-arrow-clockwise" style={{ fontSize: 50 }} />
+      <div className="spin-container">
+        <div className="spin">
+          <i className="bi bi-arrow-clockwise" style={{ fontSize: 50 }} />
+        </div>
       </div>
     );
   }
@@ -37,12 +39,7 @@ const CardList = ({ openWatch, isOpenWatch, closeWatch, type }) => {
           {list.map((item, index) => {
             return (
               <li key={index}>
-                <CardType
-                  item={item}
-                  openWatch={openWatch}
-                  isOpenWatch={isOpenWatch}
-                  closeWatch={closeWatch}
-                />
+                <CardType item={item} />
               </li>
             );
           })}

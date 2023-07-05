@@ -1,11 +1,14 @@
 import axios from 'axios';
 
-export const RewardService = (userInfo) => {
-  const authHeader = { Authorization: 'Bearer ' + userInfo.access };
+export const RewardService = (sessionData) => {
+  const authHeader = { Authorization: 'Bearer ' + sessionData?.access };
 
   return {
-    get: async () => {
-      return axios.get('http://127.0.0.1:8000/api/rewards/', { headers: authHeader });
+    get: async (term) => {
+      return axios.get('http://127.0.0.1:8000/api/rewards/', {
+        headers: authHeader,
+        params: term ? { search: term } : {}
+      });
     },
 
     create: async (title, description, duration, cost) => {
@@ -16,8 +19,16 @@ export const RewardService = (userInfo) => {
           description,
           duration,
           cost,
-          user_id: userInfo.id
+          user_id: sessionData?.id
         },
+        { headers: authHeader }
+      );
+    },
+
+    buy: async (id) => {
+      return axios.patch(
+        `http://127.0.0.1:8000/api/rewards/${id}/buy/`,
+        {},
         { headers: authHeader }
       );
     }

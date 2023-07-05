@@ -7,17 +7,13 @@ import '../styles/main.scss';
 
 const Tasks = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isOpenWatch, setIsOpenWatch] = useState(false);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  const openWatch = () => setIsOpenWatch(true);
-  const closeWatch = () => setIsOpenWatch(false);
-
   return (
     <TaskProvider>
-      <Layout>
+      <Layout type={'task'}>
         <Modal isOpen={isOpen} closeModal={closeModal} type={'task'} />
 
         <div className="title-task">
@@ -27,12 +23,7 @@ const Tasks = () => {
           </button>
         </div>
 
-        <CardList
-          isOpenWatch={isOpenWatch}
-          openWatch={openWatch}
-          closeWatch={closeWatch}
-          type={'task'}
-        />
+        <CardList type={'task'} />
       </Layout>
     </TaskProvider>
   );

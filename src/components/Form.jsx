@@ -4,13 +4,18 @@ import Checkbox from './Checkbox';
 const Form = ({ sendData, handleChange, closeModal, inputs }) => {
   const checkbox = inputs[0].label == 'Tarefa' ? <Checkbox handleChange={handleChange} /> : <></>;
 
+  const [loading, setLoading] = React.useState(false);
+
   async function resolve() {
+    setLoading(true);
     try {
       await sendData();
       closeModal();
     } catch (error) {
       console.log(error);
       alert('Erro ao criar tarefa');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -38,7 +43,15 @@ const Form = ({ sendData, handleChange, closeModal, inputs }) => {
         })}
 
         <button type="button" onClick={resolve}>
-          Adicionar
+          {loading ? (
+            <div className="spin-container">
+              <div className="spin">
+                <i className="bi bi-arrow-clockwise " />
+              </div>
+            </div>
+          ) : (
+            'Adicionar'
+          )}
         </button>
       </form>
     </>

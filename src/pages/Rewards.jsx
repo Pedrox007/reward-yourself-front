@@ -14,7 +14,7 @@ const Rewards = () => {
   const type = 'reward';
   return (
     <RewardProvider>
-      <Layout>
+      <Layout type={'reward'}>
         <Modal isOpen={isOpen} closeModal={closeModal} />
         <div className="title-task">
           <h1>Suas Recompensas</h1>

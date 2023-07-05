@@ -108,13 +108,36 @@ span {
   }
 }
 
-.spin {
+.spin-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
   height: 24px;
   text-align: center;
   font-size: 20px;
   animation: spin 1s linear infinite;
+  .primary {
+    color: var.$primary-color-dark;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.timer-button {
+  background-color: var.$primary-color;
+  border-color: transparent;
+}
+
+.timer-button:active {
+  background-color: var.$primary-color-dark;
 }
