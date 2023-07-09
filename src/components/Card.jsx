@@ -9,6 +9,7 @@ import calendar_2 from '../assets/calendar_2.svg';
 
 import '../styles/card.scss';
 import { TaskContext } from '../context/TaskContext';
+import Modal from './Modal';
 
 const Card = ({ item }) => {
   const { fetchData } = React.useContext(TaskContext);
@@ -17,6 +18,8 @@ const Card = ({ item }) => {
   let dia = data.toString().slice(8, 11);
   let mes = data.toString().slice(4, 7);
   let ano = data.toString().slice(10, 16);
+
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const [isOpenWatch, setIsOpenWatch] = React.useState(false);
 
@@ -37,11 +40,13 @@ const Card = ({ item }) => {
         />
       ) : null}
 
+      <Modal isOpen={isOpen} closeModal={() => setIsOpen(false)} type={'task'} item={item} />
+
       <div className="card-container">
         <div className="card-header">
           <h4>{item.title}</h4>
-          <span>
-            <img src={calendar} alt="calendar" />
+          <span className="clickable" onClick={() => setIsOpen(true)}>
+            <img src={calendar} alt="edit" />
           </span>
         </div>
         <div className="card">

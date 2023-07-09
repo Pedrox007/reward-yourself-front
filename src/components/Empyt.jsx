@@ -9,15 +9,21 @@ const Empty = ({ type }) => {
   const src = type == 'task' ? empty_list : reward_empty;
   const p =
     type == 'task' ? (
-      <p>
-        Cadastre suas atividades diárias para ganhar moedas e poder alcançar o merecido descanso e
-        lazer.
-      </p>
+      <div>
+        <p style={{ fontWeight: 'bold', marginBottom: 30 }}>Nenhuma tarefa encontrada!</p>
+        <p>
+          Cadastre suas atividades diárias para ganhar moedas e poder alcançar o merecido descanso e
+          lazer.
+        </p>
+      </div>
     ) : (
-      <p>
-        Não há nenhuma recompensa cadastrada. Cadastre-as e realize as tarefas para aproveitar seu
-        merecido descanso e lazer.
-      </p>
+      <div>
+        <p style={{ fontWeight: 'bold', marginBottom: 30 }}>Nenhuma recompensa encontrada!</p>
+        <p>
+          Cadastre suas recompensas e realize as tarefas para aproveitar seu merecido descanso e
+          lazer.
+        </p>
+      </div>
     );
   return (
     <div className="empty-list">

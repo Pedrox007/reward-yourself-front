@@ -36,19 +36,37 @@ export const TaskProvider = ({ children }) => {
     }
   }
 
-  async function sendData() {
-    const res = await TaskService(loginResponse).create(
-      data.tarefa,
-      data.descricao,
-      data.tempo,
-      null,
-      data.custo,
-      'fixado' in data,
-      false
-    );
+  async function sendData(isEdit) {
+    if (isEdit) {
+      const res = await TaskService(loginResponse).edit(isEdit, {
+        title: data.tarefa,
+        description: data.descricao,
+        expected_duration: data.tempo,
+        coin_reward: data.custo,
+        fixed: 'fixado' in data
+      });
+      setData({});
+      fetchData('');
+    } else {
+      const res = await TaskService(loginResponse).create(
+        data.tarefa,
+        data.descricao,
+        data.tempo,
+        null,
+        data.custo,
+        'fixado' in data,
+        false
+      );
 
-    setTasks([...tasks, { ...res.data }]);
+      setTasks([...tasks, { ...res.data }]);
+      setData({});
+    }
+  }
+
+  async function deleteData(id) {
+    const res = await TaskService(loginResponse).del(id);
     setData({});
+    fetchData('');
   }
 
   React.useEffect(() => {
@@ -66,7 +84,8 @@ export const TaskProvider = ({ children }) => {
         sendData,
         loadingFetch,
         setLoadingFetch,
-        fetchData
+        fetchData,
+        deleteData
       }}>
       {children}
     </TaskContext.Provider>
