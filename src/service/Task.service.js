@@ -1,11 +1,13 @@
 import axios from 'axios';
 
+import { DefaultUrl } from './Api';
+
 export const TaskService = (sessionData) => {
   const authHeader = { Authorization: 'Bearer ' + sessionData?.access };
 
   return {
     get: async (term) => {
-      return axios.get('http://127.0.0.1:8000/api/tasks/', {
+      return axios.get(`${DefaultUrl}/api/tasks/`, {
         headers: authHeader,
         params: term ? { search: term } : {}
       });
@@ -21,7 +23,7 @@ export const TaskService = (sessionData) => {
       finished
     ) => {
       return axios.post(
-        'http://127.0.0.1:8000/api/tasks/',
+        `${DefaultUrl}/api/tasks/`,
         {
           title,
           description,
@@ -37,11 +39,7 @@ export const TaskService = (sessionData) => {
     },
 
     finish: async (id) => {
-      return axios.patch(
-        `http://127.0.0.1:8000/api/tasks/${id}/finish/`,
-        {},
-        { headers: authHeader }
-      );
+      return axios.patch(`${DefaultUrl}/api/tasks/${id}/finish/`, {}, { headers: authHeader });
     }
   };
 };

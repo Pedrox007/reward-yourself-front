@@ -1,11 +1,13 @@
 import axios from 'axios';
 
+import { DefaultUrl } from './Api';
+
 export const RewardService = (sessionData) => {
   const authHeader = { Authorization: 'Bearer ' + sessionData?.access };
 
   return {
     get: async (term) => {
-      return axios.get('http://127.0.0.1:8000/api/rewards/', {
+      return axios.get(`${DefaultUrl}/api/rewards/`, {
         headers: authHeader,
         params: term ? { search: term } : {}
       });
@@ -13,7 +15,7 @@ export const RewardService = (sessionData) => {
 
     create: async (title, description, duration, cost) => {
       return axios.post(
-        'http://127.0.0.1:8000/api/rewards/',
+        `${DefaultUrl}/api/rewards/`,
         {
           title,
           description,
@@ -26,11 +28,7 @@ export const RewardService = (sessionData) => {
     },
 
     buy: async (id) => {
-      return axios.patch(
-        `http://127.0.0.1:8000/api/rewards/${id}/buy/`,
-        {},
-        { headers: authHeader }
-      );
+      return axios.patch(`${DefaultUrl}/api/rewards/${id}/buy/`, {}, { headers: authHeader });
     }
   };
 };
