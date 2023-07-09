@@ -8,11 +8,14 @@ import coin_icon from '../assets/coin_icon.png';
 import clock from '../assets/clock.svg';
 import { RewardContext } from '../context/RewardContext';
 import { useAuth } from '../context/AuthContext';
+import Modal from './Modal';
 
 const CardReward = ({ item }) => {
   const [isOpenWatch, setIsOpenWatch] = React.useState(false);
 
   const { userInfo } = useAuth();
+
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const { fetchData, searchReward } = React.useContext(RewardContext);
   console.log(searchReward);
@@ -34,11 +37,14 @@ const CardReward = ({ item }) => {
           id={item.id}
         />
       ) : null}
+
+      <Modal isOpen={isOpen} closeModal={() => setIsOpen(false)} item={item} />
+
       <div className="card-container">
         <div className="card-header">
           <h4>{item.title}</h4>
-          <span>
-            <img src={calendar} alt="calendar" />
+          <span className="clickable" onClick={() => setIsOpen(true)}>
+            <img src={calendar} alt="edit" />
           </span>
         </div>
         <div className="card">

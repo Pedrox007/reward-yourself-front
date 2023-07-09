@@ -15,6 +15,8 @@ const StopWatch = ({ time, isOpenWatch, closeWatch, id, isReward }) => {
 
   const [timer, setTimer] = useState(`${hour}:${minutes}:${seconds}`);
 
+  const [finish, setFinish] = useState(false);
+
   const [intervalId, setIntervalId] = useState(null);
   const [secondsCounter, setSecondsCounter] = useState(0);
 
@@ -36,24 +38,30 @@ const StopWatch = ({ time, isOpenWatch, closeWatch, id, isReward }) => {
   };
 
   const startCount = () => {
-    if (isReward && !buy) handleBuy();
+    if (finish) return;
+    if (!intervalId) {
+      if (isReward && !buy) handleBuy();
 
-    const id = setInterval(() => {
-      addSecond();
-    }, 1000);
+      const id = setInterval(() => {
+        addSecond();
+      }, 1000);
 
-    setIntervalId(id);
+      setIntervalId(id);
+    }
   };
 
   const stopCount = () => {
+    if (finish) return;
     clearInterval(intervalId);
     setIntervalId(null);
   };
 
   const restartCount = () => {
+    if (finish) return;
+    setSecondsCounter(0);
     clearInterval(intervalId);
     setIntervalId(null);
-    setSecondsCounter(0);
+    // calculateTimer();
   };
 
   const handleFinish = async () => {
@@ -66,24 +74,27 @@ const StopWatch = ({ time, isOpenWatch, closeWatch, id, isReward }) => {
     }
   };
 
-  React.useEffect(() => {
-    if (secondsCounter) {
-      let s = seconds - Math.floor(secondsCounter % 60);
-      let m = minutes - Math.floor((secondsCounter / 60) % 60);
-      let h = hour - Math.floor((secondsCounter / 60 / 60) % 60);
+  const calculateTimer = () => {
+    let s = seconds - Math.floor(secondsCounter % 60);
+    let m = minutes - Math.floor((secondsCounter / 60) % 60);
+    let h = hour - Math.floor((secondsCounter / 60 / 60) % 60);
 
-      s = s < 0 ? '00' : `0${s}`.slice(-2);
-      m = m < 0 ? '00' : `0${m}`.slice(-2);
-      h = h < 0 ? '00' : `0${h}`.slice(-2);
+    s = s < 0 ? '00' : `0${s}`.slice(-2);
+    m = m < 0 ? '00' : `0${m}`.slice(-2);
+    h = h < 0 ? '00' : `0${h}`.slice(-2);
 
-      if (s === '00' && m === '00' && h === '00') {
-        setTimer('Concluído');
-        clearInterval(intervalId);
-        if (!isReward) handleFinish();
-      } else {
-        setTimer(`${h}:${m}:${s}`);
-      }
+    if (s === '00' && m === '00' && h === '00') {
+      if (!isReward && !finish) handleFinish();
+      setTimer('Concluído');
+      setFinish(true);
+      clearInterval(intervalId);
+    } else {
+      setTimer(`${h}:${m}:${s}`);
     }
+  };
+
+  React.useEffect(() => {
+    calculateTimer();
   }, [secondsCounter]);
 
   if (isOpenWatch) {
@@ -95,19 +106,22 @@ const StopWatch = ({ time, isOpenWatch, closeWatch, id, isReward }) => {
           </div>
           <span className="time">{timer}</span>
 
-          <div className="watch-controls">
-            <button className="timer-button clickable" onClick={startCount}>
-              <i className="bi bi-play-fill"></i>
-            </button>
+          {!finish ? (
+            <div className="watch-controls">
+              <button className="timer-button clickable" onClick={startCount}>
+                <i className="bi bi-play-fill"></i>
+              </button>
 
-            <button className="timer-button clickable" onClick={stopCount}>
-              <i className="bi bi-pause-fill"></i>
-            </button>
-
-            <button className="timer-button clickable" onClick={restartCount}>
-              <i className="bi bi-arrow-repeat"></i>
-            </button>
-          </div>
+              <button className="timer-button clickable" onClick={stopCount}>
+                <i className="bi bi-pause-fill"></i>
+              </button>
+              {!intervalId ? (
+                <button className="timer-button clickable" onClick={restartCount}>
+                  <i className="bi bi-arrow-repeat"></i>
+                </button>
+              ) : null}
+            </div>
+          ) : null}
         </div>
       </div>
     );

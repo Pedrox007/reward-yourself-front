@@ -36,16 +36,33 @@ export const RewardProvider = ({ children }) => {
     }
   }
 
-  async function sendData() {
-    const res = await RewardService(loginResponse).create(
-      data.recompensa,
-      data.descricao,
-      data.tempo,
-      data.custo
-    );
+  async function sendData(isEdit) {
+    if (isEdit) {
+      const res = await RewardService(loginResponse).edit(isEdit, {
+        title: data.recompensa,
+        description: data.descricao,
+        duration: data.tempo,
+        cost: data.custo
+      });
+      setData({});
+      fetchData('');
+    } else {
+      const res = await RewardService(loginResponse).create(
+        data.recompensa,
+        data.descricao,
+        data.tempo,
+        data.custo
+      );
 
-    setRewards([...rewards, { ...res.data }]);
+      setRewards([...rewards, { ...res.data }]);
+      setData({});
+    }
+  }
+
+  async function deleteData(id) {
+    const res = await RewardService(loginResponse).del(id);
     setData({});
+    fetchData('');
   }
 
   React.useEffect(() => {
@@ -63,7 +80,8 @@ export const RewardProvider = ({ children }) => {
         sendData,
         loadingFetch,
         setLoadingFetch,
-        fetchData
+        fetchData,
+        deleteData
       }}>
       {children}
     </RewardContext.Provider>

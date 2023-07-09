@@ -27,6 +27,14 @@ export const RewardService = (sessionData) => {
       );
     },
 
+    edit: async (id, payload) => {
+      return axios.patch(`${DefaultUrl}/api/rewards/${id}/`, payload, { headers: authHeader });
+    },
+
+    del: async (id) => {
+      return axios.delete(`${DefaultUrl}/api/rewards/${id}/`, { headers: authHeader });
+    },
+
     buy: async (id) => {
       return axios.patch(`${DefaultUrl}/api/rewards/${id}/buy/`, {}, { headers: authHeader });
     }

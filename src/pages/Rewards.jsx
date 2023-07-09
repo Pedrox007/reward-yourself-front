@@ -16,12 +16,14 @@ const Rewards = () => {
     <RewardProvider>
       <Layout type={'reward'}>
         <Modal isOpen={isOpen} closeModal={closeModal} />
+
         <div className="title-task">
           <h1>Suas Recompensas</h1>
           <button onClick={openModal}>
             <i className="bi bi-plus-circle"></i>
           </button>
         </div>
+
         <CardList type={type} />
       </Layout>
     </RewardProvider>

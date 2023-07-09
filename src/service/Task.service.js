@@ -38,6 +38,14 @@ export const TaskService = (sessionData) => {
       );
     },
 
+    edit: async (id, payload) => {
+      return axios.patch(`${DefaultUrl}/api/tasks/${id}/`, payload, { headers: authHeader });
+    },
+
+    del: async (id) => {
+      return axios.delete(`${DefaultUrl}/api/tasks/${id}/`, { headers: authHeader });
+    },
+
     finish: async (id) => {
       return axios.patch(`${DefaultUrl}/api/tasks/${id}/finish/`, {}, { headers: authHeader });
     }
